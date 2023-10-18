@@ -103,7 +103,7 @@ Au fil des années, ma passion pour les nouvelles technologies a grandi.<br> J'a
                        <a href="CV.pdf" download class="btn btn2">Télecharger CV</a>
                     </div>
                     <div class="contact-right">
-                        <form>
+                        <form name="submit-to-google-sheet">
                             <input type="text" name="Name" placeholder="Votre nom" required>
                             <input type="email" name="email" placeholder="Votre Email" required>
                             <textarea name="Message" rows="6" placeholder="Votre message"></textarea>
@@ -114,5 +114,16 @@ Au fil des années, ma passion pour les nouvelles technologies a grandi.<br> J'a
             </div>
             <div class="info">Copyright © 2023 Kharraz Mohamed</div>
         </div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwV4dumTE8jLQUVvokT1ks49h6YoHAKP4n4u5pw5doA-kkQ7DEkqVWQjScBERPA5V9vLg/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
     </body>
 </html>
