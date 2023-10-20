@@ -120,22 +120,22 @@ Au fil des années, ma passion pour les nouvelles technologies a grandi.<br> J'a
     <div class="info">Copyright © 2023 Kharraz Mohamed</div>
     </section>
     <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwV4dumTE8jLQUVvokT1ks49h6YoHAKP4n4u5pw5doA-kkQ7DEkqVWQjScBERPA5V9vLg/exec';
-    const form = document.forms['submit-to-google-sheet'];
-    const msg = document.getElementById('msg');
-    
-    form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-    msg.innerHTML = 'Message envoyé avec succès';
-    setTimeout(function(){
-    msg.innerHTML = '';
-    },5000);
-    from.reset();
-    })
-    .catch(error => console.error('Error!', error.message));
-    });
-    </script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwV4dumTE8jLQUVvokT1ks49h6YoHAKP4n4u5pw5doA-kkQ7DEkqVWQjScBERPA5V9vLg/exec';
+const form = document.forms['submit-to-google-sheet'];
+const msg = document.getElementById('msg');
+
+form.addEventListener('submit', e => {
+e.preventDefault();
+fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+.then(response => {
+msg.innerHTML = 'Message envoyé avec succès';
+setTimeout(function(){
+msg.innerHTML = '';
+},5000);
+from.reset();
+})
+.catch(error => console.error('Error!', error.message));
+});
+</script>
     </body>
     </html>
