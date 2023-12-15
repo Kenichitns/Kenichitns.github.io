@@ -103,7 +103,7 @@ nav ul li a:hover::after{
 }
 .portfolio h2{
     font-size: 48px;
-    font-family: 'Righteous';
+    font-family: 'Andale Mono, monospace';
     text-align: center;
     padding: 20px 0;
 }
