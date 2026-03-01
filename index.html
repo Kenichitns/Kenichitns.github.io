@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mohamed Kharraz | Développeur & Technicien Réseau</title>
+  <meta name="description" content="Portfolio de Mohamed Kharraz, étudiant en BTS SIO SLAM. Découvrez mes projets, compétences en développement web et réseaux.">
+  <meta name="theme-color" content="#b20a2c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Preconnect / Prefetch pour performance -->
+  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <!-- Font Awesome (CDN) - affiche les icônes sans kit -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+  
+  <!-- Stylesheet optimisé avec preload -->
+  <link rel="preload" href="css/Style.css" as="style">
+  <link rel="stylesheet" href="css/Style.css">
+  
+  <!-- Preload JS critique -->
+<script src="js/script.js" defer></script>  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ===== HEADER & NAVIGATION ===== -->
+  <header id="header" class="hero-section" role="banner">
+    <!-- Navigation Bar -->
+    <nav class="navbar" aria-label="Navigation principale">
+      <div class="navbar-container container">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+          <div class="logo-wrapper">
+            <div class="logo-icon">
+              <span class="logo-symbol">&lt;/&gt;</span>
+            </div>
+            <span class="logo-text">
+              <span class="logo-initials">MK</span>
+              <span class="logo-name">TECHNOLOGIE</span>
+            </span>
+          </div>
+        </a>
+
+        <button 
+          id="nav-toggle" 
+          class="nav-toggle nav-toggle--menu" 
+          type="button"
+          aria-label="Ouvrir le menu de navigation" 
+          aria-controls="nav-links" 
+          aria-expanded="false"
+          aria-pressed="false"
+        >
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#header" class="nav-link">Accueil</a></li>
+          <li><a href="#competences" class="nav-link">Compétences</a></li>
+          <li><a href="#projets" class="nav-link">Projets</a></li>
+          <li><a href="#experience" class="nav-link">Expérience</a></li>
+          <li><a href="#parcours" class="nav-link">Formation</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="https://www.canva.com/design/DAHChCMz4Aw/IOZznN9F3lm_HCqLMmdp7w/view?utm_content=DAHChCMz4Aw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h00b0ba224d" class="nav-link">Tableau de Synthèse</a></li>
+          <li><a href="Veille-IA-Jeux-Video.html" class="nav-link">Veille</a></li>
+          <li><a href="CV V2.pdf" download class="btn-nav" aria-label="Télécharger mon CV en PDF">
+            <span>CV</span>
+            <i class="fa-solid fa-download"></i>
+          </a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-container container">
+        <div class="hero-text-wrapper">
+          <p class="hero-greeting" data-animate="fade-up" data-delay="0.1s">
+            <span class="greeting-text">BIENVENUE SUR MON PORTFOLIO</span>
+          </p>
+          
+          <h1 class="hero-title" data-animate="fade-up" data-delay="0.3s">
+            <span class="title-prefix">Je suis</span>
+            <span class="title-name highlight">Mohamed Kharraz</span>
+          </h1>
+          
+          <p class="hero-subtitle" data-animate="fade-up" data-delay="0.5s">
+            Développeur & technicien réseau — BTS SIO SLAM
+          </p>
+          
+          <div class="hero-typed-wrapper" data-animate="fade-up" data-delay="0.7s">
+            <span
+              class="typed-text"
+              id="typed-text"
+              aria-live="polite"
+              data-typed-texts="Développeur Web|Technicien Réseau|Passionné de cybersécurité|Étudiant BTS SIO SLAM"
+            ></span>
+            <span class="typed-cursor" aria-hidden="true">|</span>
+          </div>
+          
+          <div class="hero-buttons" data-animate="fade-up" data-delay="0.9s">
+            <a href="#projets" class="btn-primary hero-btn">
+              <span>Voir mes projets</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn-secondary hero-btn">
+              <span>Me contacter</span>
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator" data-animate="fade-up" data-delay="1.1s">
+        <a href="#about" class="scroll-down" aria-label="Défiler vers le bas">
+          <span class="scroll-mouse">
+            <span class="scroll-wheel"></span>
+          </span>
+          <span class="scroll-arrow">
+            <i class="fa-solid fa-chevron-down"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main-content" role="main">
+
+    <!-- À propos -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="about-title" class="section-title">À propos de moi</h2>
+          <div class="title-underline"></div>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img src="Image/Photo.jpg" alt="Photo de Mohamed Kharraz" loading="lazy" decoding="async" width="480" height="600">
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+          
+          <div class="about-text">
+            <h3>Étudiant en BTS SIO SLAM</h3>
+            <p class="about-intro">
+              Je m'appelle <strong>Mohamed Kharraz</strong>, j'ai 19 ans et je suis étudiant en BTS SIO option SLAM.
+            </p>
+            <p>
+              Depuis tout petit, je suis fasciné par les nouvelles technologies et par ce que l’on peut construire avec un ordinateur.
+              Au fil des années, j'ai appris à programmer, à utiliser des outils de conception et à dépanner des postes pour mon entourage.
+            </p>
+            <p>
+              Mon objectif principal est d’évoluer vers la <strong>cybersécurité</strong>, en m’appuyant sur une base solide en réseaux et systèmes.
+              Je souhaite rejoindre une équipe où je peux apprendre, sécuriser des infrastructures et développer des outils concrets.
+            </p>
+            
+            <div class="about-stats">
+              <div class="stat-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <div>
+                  <h4>3+</h4>
+                  <p>Stages réalisés</p>
+                </div>
+              </div>
+              <div class="stat-item">
+                <i class="fa-solid fa-code"></i>
+                <div>
+                  <h4>5+</h4>
+                  <p>Projets personnels</p>
+                </div>
+              </div>
+              <div class="stat-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                  <h4>BTS</h4>
+                  <p>SIO SLAM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="interests">
+              <h4><i class="fa-solid fa-gamepad"></i> Mes passions</h4>
+              <p>
+                En dehors de mes études, j'aime passer du temps à créer des jeux mobiles. 
+                C'est un loisir qui me permet de combiner ma passion pour l'informatique et mon intérêt pour le game design.
+              </p>
+              <p>
+                J'utilise principalement <strong>Unity</strong> et <strong>Unreal Engine</strong> pour prototyper des jeux (runner 2D, puzzle, jeux de stratégie…).
+              </p>
+              <div class="interests-links">
+                <a href="https://github.com/Kenichitns" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Voir mes projets de jeux sur GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences" class="section section-dark" aria-labelledby="competences-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="competences-title" class="section-title">Mes compétences</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Technologies et outils que je maîtrise</p>
+        </div>
+
+        <div class="competences-grid">
+          
+          <div class="competence-category">
+            <div class="category-icon">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3>Développement</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">HTML/CSS/JS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">C#</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="70"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">SQL</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="competence-category">
+            <div class="category-icon">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h3>Réseaux & Système</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Cisco (Switches/Routeurs)</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Windows Server</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="20"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Linux</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="50"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Virtualisation (VMware)</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="competence-category">
+            <div class="category-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Sécurité</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Pare-feu (Fortinet)</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="38"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Wireshark</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="40"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Active Directory</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="50"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Cybersécurité</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="60"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="competence-category">
+            <div class="category-icon">
+              <i class="fa-solid fa-toolbox"></i>
+            </div>
+            <h3>Outils & Autres</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Git/GitHub</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Unity/Unreal Engine</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="40"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Docker</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="20"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">PowerShell</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress="40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets" class="section section-dark" aria-labelledby="projets-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="projets-title" class="section-title">Projets</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Une sélection de projets personnels et scolaires</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-header">
+              <h3>Application Projet PharmaSI</h3>
+              <p class="project-stack">C#</p>
+            </div>
+            <p class="project-role">
+              Développement d’une application de gestion de pharmacie avec interface graphique.
+            </p>
+            <ul class="card-tags">
+              <li>Visual Studio</li>
+              <li>Full Stack</li>
+              <li>Application</li>
+            </ul>
+            <div class="project-links"> 
+              <a href="https://github.com/Kenichitns/PharmaSI" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="fa-brands fa-github"></i>
+                <span>Voir le projet sur GitHub</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <h3>Site vitrine – KH. Afrique Mode</h3>
+              <p class="project-stack">HTML • CSS • JS</p>
+            </div>
+            <p class="project-role">
+              Développement d’un site vitrine pour une entreprise.
+            </p>
+            <ul class="card-tags">
+              <li>Front-end</li>
+              <li>Responsive</li>
+              <li>UX/UI</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/Kenichitns/Kh.Afrique-Mode" class="btn-secondary">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>Voir le détail du projet</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <h3>Ce Portfolio</h3>
+              <p class="project-stack">HTML • CSS • JS</p>
+            </div>
+            <p class="project-role">
+              Conception et développement de ce portfolio personnel pour présenter mes compétences, projets et expériences.
+            </p>
+            <ul class="card-tags">
+              <li>Back-end</li>
+              <li>Front-end</li>
+              <li>Responsive</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/Kenichitns/Kenichitns.github.io" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="fa-brands fa-github"></i>
+                <span>Voir le projet sur GitHub</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expériences professionnelles -->
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="experience-title" class="section-title">Expériences professionnelles</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Découvrez mes stages et missions réalisés</p>
+        </div>
+
+        <ol class="timeline" role="list">
+          
+          <li class="timeline-item" role="listitem">
+            <div class="timeline-dot"></div>
+            <article class="timeline-content">
+              <div class="timeline-card">
+                <figure class="card-image">
+                  <img src="Image/LogoKh.png" alt="Stage chez" loading="lazy" decoding="async" width="900" height="200">
+                  <div class="card-overlay">
+                    <a href="stage-kh.html" class="btn-card">Voir les détails</a>
+                  </div>
+                </figure>
+                <div class="card-body">
+                  <span class="card-date"><i class="fa-solid fa-calendar"></i>2025-2026</span>
+                  <h3>KH. Afrique Mode</h3>
+                  <p class="card-role">Développement web (vitrine) & Gestion de projet</p>
+                  <ul class="card-tags">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Javascript</li>
+                    <li>Gantt</li>
+                    <li>UX/UI</li>
+                  </ul>
+                  <p class="card-role">
+                    Site vitrine livré et mis en ligne, avec suivi de projet via diagramme de Gantt.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+          <li class="timeline-item" role="listitem">
+            <div class="timeline-dot"></div>
+            <article class="timeline-content">
+              <div class="timeline-card">
+                <figure class="card-image">
+                  <img src="Image/Logo Save.png" alt="Stage Save" loading="lazy" decoding="async" width="900" height="200">
+                  <div class="card-overlay">
+                    <a href="stage-save.html" class="btn-card">Voir les détails</a>
+                  </div>
+                </figure>
+                <div class="card-body">
+                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2024–2025</span>
+                  <h3>Save</h3>
+                  <p class="card-role">Réparation et gestion des appareils</p>
+                  <ul class="card-tags">
+                    <li>Hardware</li>
+                    <li>Windows</li>
+                    <li>Linux</li>
+                    <li>Support</li>
+                    <li>Sauvegarde</li>
+                  </ul>
+                  <p class="card-role">
+                    Diagnostics et réparations quotidiens, avec documentation des interventions et accompagnement des clients.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+          <li class="timeline-item" role="listitem">
+            <div class="timeline-dot"></div>
+            <article class="timeline-content">
+              <div class="timeline-card">
+                <figure class="card-image">
+                  <img src="Image/Logo cursor.jpg" alt="Stage Deezer" loading="lazy" decoding="async" width="900" height="200">
+                  <div class="card-overlay">
+                    <a href="stage-deezer.html" class="btn-card">Voir les détails</a>
+                  </div>
+                </figure>
+                <div class="card-body">
+                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2023–2024</span>
+                  <h3>Deezer</h3>
+                  <p class="card-role">Support technique & développement</p>
+                  <ul class="card-tags">
+                    <li>Python</li>
+                    <li>Git</li>
+                    <li>Docker</li>
+                    <li>Jira</li>
+                    <li>Automatisation</li>
+                  </ul>
+                  <p class="card-role">
+                    Scripts d’automatisation et participation aux workflows de support (tickets, revues de code, documentation).
+                  </p>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+          <li class="timeline-item" role="listitem">
+            <div class="timeline-dot"></div>
+            <article class="timeline-content">
+              <div class="timeline-card">
+                <figure class="card-image">
+                  <img src="Image/Logo Save.png" alt="Stage Save" loading="lazy" decoding="async" width="900" height="200">
+                  <div class="card-overlay">
+                    <a href="stage-save.html" class="btn-card">Voir les détails</a>
+                  </div>
+                </figure>
+                <div class="card-body">
+                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2022–2023</span>
+                  <h3>Save</h3>
+                  <p class="card-role">Réparation et gestion des appareils</p>
+                  <ul class="card-tags">
+                    <li>Hardware</li>
+                    <li>Windows</li>
+                    <li>Linux</li>
+                    <li>Support</li>
+                    <li>Relation client</li>
+                  </ul>
+                  <p class="card-role">
+                    Prise en charge de tickets quotidiens et amélioration de la satisfaction client grâce à un suivi rigoureux.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </li>
+          
+        </ol>
+      </div>
+    </section>
+
+    <!-- Parcours scolaire -->
+    <section id="parcours" class="section section-dark" aria-labelledby="parcours-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="parcours-title" class="section-title">Formation</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Mon parcours académique</p>
+        </div>
+
+        <div class="formation-grid">
+          
+          <div class="formation-card">
+            <div class="formation-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3>BTS SIO SLAM</h3>
+            <p class="formation-period">2024 - 2026 (en cours)</p>
+            <p class="formation-school">Lycée Louis Armand - Paris 15ᵉ</p>
+            <p class="formation-desc">
+              Formation en développement d'applications, gestion de bases de données et conception de solutions logicielles.
+            </p>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-icon">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3>Bac Pro SN-RISC</h3>
+            <p class="formation-period">2021 - 2024</p>
+            <p class="formation-school">Lycée Gustave Ferrié - Paris 18ᵉ</p>
+            <p class="formation-desc">
+              Spécialisation en réseaux informatiques et systèmes communicants. Formation en maintenance et configuration d'équipements réseau.
+            </p>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-icon">
+              <i class="fa-solid fa-school"></i>
+            </div>
+            <h3>Brevet des Collèges</h3>
+            <p class="formation-period">2020 - 2021</p>
+            <p class="formation-school">Collège Saint Vincent - Paris 18ᵉ</p>
+            <p class="formation-desc">
+              Obtention du Diplôme National du Brevet avec mention.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="cta-formation">
+          <a href="Scolarite.html" class="btn-primary">Voir le détail de mon parcours</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="contact-title" class="section-title">Contactez-moi</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Une question ? Un projet ? N'hésitez pas à me contacter</p>
+        </div>
+
+        <div class="contact-wrapper">
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <a href="mailto:Kharraz.Mohamed.gf@gmail.com">Kharraz.Mohamed.gf@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Téléphone</h4>
+                <a href="tel:0614852740">06 ** ** ** **</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Localisation</h4>
+                <p>Île-de-France, France</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h4>Retrouvez-moi sur</h4>
+              <div class="social-icons-grid">
+                <a href="https://www.linkedin.com/in/mohamed-kharraz-230250257/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/Kenichitns/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper">
+            <form 
+              name="submit-to-google-sheet" 
+              id="contact-form"
+              aria-label="Formulaire de contact"
+              novalidate
+            >
+              <fieldset>
+                <legend class="sr-only">Vos informations</legend>
+                
+                <div class="form-group">
+                  <label for="name">
+                    Nom complet
+                    <span class="required" aria-label="requis">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="Name" 
+                    placeholder="Votre nom" 
+                    required
+                    aria-required="true"
+                    inputmode="text"
+                  >
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">
+                    Adresse email
+                    <span class="required" aria-label="requis">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="Email" 
+                    placeholder="votre.email@exemple.com" 
+                    required
+                    aria-required="true"
+                    inputmode="email"
+                  >
+                </div>
+                
+                <div class="form-group">
+                  <label for="message">
+                    Message
+                    <span class="required" aria-label="requis">*</span>
+                  </label>
+                  <textarea 
+                    id="message" 
+                    name="Message" 
+                    rows="6" 
+                    placeholder="Votre message..." 
+                    required
+                    aria-required="true"
+                  ></textarea>
+                </div>
+              </fieldset>
+              
+              <button type="submit" class="btn-submit">
+                <span class="btn-text">Envoyer le message</span>
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+              
+              <div id="msg" role="status" aria-live="polite" aria-atomic="true"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; <time>2026</time> Mohamed Kharraz – Portfolio BTS SIO</p>
+        <address>
+          <a href="mailto:Kharraz.Mohamed.gf@gmail.com">Kharraz.Mohamed.gf@gmail.com</a>
+          <a href="tel:+33614852740">06 ** ** ** **</a>
+        </address>
+        <p class="footer-subtitle"Conçu et développé par le sang et la sueur</p>
+      </div>
+      <button id="scroll-top" aria-label="Retour en haut">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+  </footer>
+</body>
+</html>
