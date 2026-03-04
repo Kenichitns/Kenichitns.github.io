@@ -119,15 +119,7 @@
       });
     },
 
-    setupScroll() {
-      const handleScroll = Utils.throttle(() => {
-        const scrollY = window.scrollY;
-        
-        if (this.navbar) {
-          scrollY > CONFIG.animation.scrollThreshold 
-            ? Utils.addClass(this.navbar, 'scrolled') 
-            : Utils.removeClass(this.navbar, 'scrolled');
-        }
+    setupScroll()
 
         if (this.scrollTop) {
           scrollY > 500 
