@@ -69,7 +69,7 @@ Recherche et documentation sur l'IA dans les jeux vidéo.
 ## 📫 Contact
 
 - 📧 Email : [Kharraz.Mohamed.gf@gmail.com](mailto:Kharraz.Mohamed.gf@gmail.com)
-- 📱 Téléphone : 06 14 85 27 40
+- 📱 Téléphone : 06 ** ** ** **
 - 💼 LinkedIn : [Mohamed Kharraz](https://www.linkedin.com/in/mohamed-kharraz-230250257/)
 - 🐙 GitHub : [@Kenichitns](https://github.com/Kenichitns)
 - 📍 Localisation : Île-de-France, France
