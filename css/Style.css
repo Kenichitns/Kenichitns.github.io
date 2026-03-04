@@ -552,3 +552,24 @@ button { font-family: inherit; cursor: pointer; }
   body { background: white; color: black; }
   .section { page-break-inside: avoid; }
 }
+/* 1. Bloquer l'extension infinie de la zone de message */
+.form-group textarea {
+    resize: none; /* ou utilisez max-height: 300px; */
+}
+
+/* 2. Cacher définitivement le bouton scroll */
+#scroll-top {
+    display: none !important;
+}
+
+/* 3. Corriger le carré blanc dans le contact (suppression bordure par défaut) */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 4. Ajuster la barre de titre dans Formation */
+.header-secondary {
+    padding-top: 100px; /* Évite que le texte ne chevauche la navbar */
+}
