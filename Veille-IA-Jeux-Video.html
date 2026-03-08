@@ -1,136 +1,523 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Veille Technologique - IA dans les Jeux Vidéo | Mohamed Kharraz - BTS SIO SLAM</title>
-  <meta name="description" content="Veille technologique sur l'intelligence artificielle dans les jeux vidéo depuis 2023. Découvrez les dernières innovations, tendances et applications de l'IA dans l'industrie du gaming.">
-  <meta name="keywords" content="IA, intelligence artificielle, jeux vidéo, gaming, veille technologique, innovations 2023 2024 2025">
+  <title>Veille Technologique – IA &amp; Jeux Vidéo 2026 | Mohamed Kharraz</title>
+  <meta name="description" content="Veille sur l'IA agentique dans les jeux vidéo en 2026 : GDC 2026, DLSS 4.5, PNJ à mémoire, enjeux éthiques et impact environnemental.">
+  <meta name="keywords" content="IA, jeux vidéo, veille technologique, 2026, GDC, NVIDIA, DLSS, Unreal Engine, Unity, PNJ agentique">
   <meta name="author" content="Mohamed Kharraz">
-  <meta name="theme-color" content="#b20a2c">
-  
-  <!-- Open Graph / Facebook -->
+  <meta name="theme-color" content="#c0122e">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Veille Technologique - IA dans les Jeux Vidéo">
-  <meta property="og:description" content="Veille sur l'intelligence artificielle dans les jeux vidéo depuis 2023">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="Image/favicon.png">
-  
-  <!-- Preconnect pour optimisation -->
-  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+  <meta property="og:title" content="Veille IA & Jeux Vidéo 2026 – Mohamed Kharraz">
+  <meta property="og:description" content="État de l'art de l'IA dans le jeu vidéo en 2026 : infrastructure, moteurs, rendu, PNJ et enjeux éthiques.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  
-  <!-- Styles optimisés -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
   <link rel="preload" href="css/Style.css" as="style">
   <link rel="stylesheet" href="css/Style.css">
-  
-  <!-- Preload JS optimisé -->
-  <link rel="preload" href="js/script.js" as="script">
-  
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/c7e63e3440.js" crossorigin="anonymous" async defer></script>
+  <script src="js/script.js" defer></script>
+  <style>
+    /* ── Chiffres clés ───────────────────────────── */
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:20px;margin:40px 0}
+    .stat-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 20px;text-align:center;transition:var(--tr-base);position:relative;overflow:hidden}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#e8475f);transform:scaleX(0);transform-origin:left;transition:transform var(--tr-base)}
+    .stat-card:hover::before{transform:scaleX(1)}
+    .stat-card:hover{border-color:var(--border-hover);transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+    .stat-number{font-size:clamp(2rem,4vw,2.6rem);font-weight:800;color:var(--primary);line-height:1;margin-bottom:8px;font-family:var(--font-mono)}
+    .stat-label{font-size:0.83rem;color:var(--text-light);line-height:1.45}
+
+    /* ── Tableau responsive ──────────────────────── */
+    .data-table-wrapper{overflow-x:auto;border-radius:var(--radius-md);border:1px solid var(--border);margin:28px 0}
+    .data-table{width:100%;border-collapse:collapse;background:var(--bg-surface);font-size:0.88rem;min-width:540px}
+    .data-table thead{background:var(--primary)}
+    .data-table thead th{padding:14px 16px;text-align:left;color:#fff;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:.78rem}
+    .data-table tbody tr{border-bottom:1px solid var(--border);transition:background var(--tr-fast)}
+    .data-table tbody tr:last-child{border-bottom:none}
+    .data-table tbody tr:hover{background:var(--primary-light)}
+    .data-table tbody td{padding:12px 16px;color:var(--text-muted);vertical-align:middle}
+    .data-table tbody td strong{color:var(--text)}
+
+    /* ── Cards cas d'usage ───────────────────────── */
+    .cas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
+    .cas-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:var(--tr-base);display:flex;flex-direction:column;gap:14px}
+    .cas-card:hover{border-color:var(--border-hover);transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+    .cas-header{display:flex;align-items:flex-start;gap:14px}
+    .cas-icon{width:48px;height:48px;flex-shrink:0;background:var(--primary-light);border:1px solid rgba(192,18,46,.2);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center}
+    .cas-icon i{font-size:1.3rem;color:var(--primary)}
+    .cas-title{font-size:1.05rem;color:var(--text);font-weight:600;margin-bottom:4px}
+    .cas-meta{font-size:.78rem;color:var(--primary);font-family:var(--font-mono);font-weight:600}
+    .cas-card p{font-size:.9rem;color:var(--text-muted);line-height:1.75}
+
+    /* ── Alerte ─────────────────────────────────── */
+    .alert-box{border-left:3px solid var(--primary);background:var(--primary-light);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin:20px 0}
+    .alert-box i{color:var(--primary);font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .alert-box p{margin:0;font-size:.92rem;color:var(--text-muted);line-height:1.7}
+    .alert-box p strong{color:var(--text)}
+    .alert-orange{border-color:#f97316;background:rgba(249,115,22,.08)}
+    .alert-orange i{color:#f97316}
+
+    /* ── Grille env ──────────────────────────────── */
+    .env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:32px}
+    .env-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px;text-align:center;transition:var(--tr-base)}
+    .env-card:hover{border-color:rgba(249,115,22,.4);transform:translateY(-3px)}
+    .env-icon{font-size:1.8rem;margin-bottom:10px}
+    .env-value{font-size:1.4rem;font-weight:700;color:#f97316;margin-bottom:6px;font-family:var(--font-mono)}
+    .env-label{font-size:.82rem;color:var(--text-light);line-height:1.5}
+
+    /* ── Tendances list ──────────────────────────── */
+    .tendances-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:24px}
+    .tendances-list li{display:flex;align-items:flex-start;gap:14px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px 20px;transition:var(--tr-base)}
+    .tendances-list li:hover{border-color:var(--border-hover);transform:translateX(6px)}
+    .tendances-list li i{color:var(--primary);font-size:1rem;flex-shrink:0;margin-top:3px}
+    .tendances-list li span{font-size:.92rem;color:var(--text-muted);line-height:1.65}
+    .tendances-list li strong{color:var(--text)}
+
+    /* ── Sources ─────────────────────────────────── */
+    .sources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .source-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px;transition:var(--tr-base)}
+    .source-card:hover{border-color:var(--border-hover)}
+    .source-card h4{font-size:.95rem;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .source-card h4 i{color:var(--primary)}
+    .source-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .source-card li{font-size:.84rem}
+    .source-card a{color:var(--primary);transition:var(--tr-fast)}
+    .source-card a:hover{text-decoration:underline}
+    .source-card span{color:var(--text-muted)}
+
+    /* ── Navigation rapide ── REFAITE ────────────── */
+    .veille-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:52px}
+    .veille-nav a{
+      padding:9px 18px;border-radius:50px;font-size:.82rem;font-weight:600;
+      background:var(--bg-surface);color:var(--text-muted);
+      border:1px solid var(--border);transition:var(--tr-base);
+      display:flex;align-items:center;gap:6px;
+    }
+    .veille-nav a:hover,.veille-nav a.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+    /* ── Highlight accent ────────────────────────── */
+    .accent{color:var(--primary)}
+    .mono{font-family:var(--font-mono);font-size:.92em}
+
+    /* ══════════════════════════════════════════════
+       NOUVEAUX COMPOSANTS ORAL BTS SIO
+    ══════════════════════════════════════════════ */
+
+    /* ── Bouton mode oral ── */
+    #oral-toggle{
+      position:fixed;bottom:90px;right:22px;z-index:999;
+      background:#c0122e;color:#fff;border:none;border-radius:50px;
+      padding:10px 18px;font-family:'Outfit',sans-serif;font-weight:700;
+      font-size:.82rem;letter-spacing:.05em;cursor:pointer;
+      box-shadow:0 4px 20px rgba(192,18,46,.5);
+      display:flex;align-items:center;gap:8px;
+      transition:transform .2s,box-shadow .2s;
+    }
+    #oral-toggle:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(192,18,46,.65)}
+
+    /* ── Panel oral ── */
+    #oral-panel{
+      position:fixed;top:0;right:0;height:100vh;width:310px;
+      background:#161616;border-left:2px solid rgba(192,18,46,.4);
+      z-index:998;transform:translateX(110%);
+      transition:transform .35s cubic-bezier(.4,0,.2,1);
+      overflow-y:auto;padding:24px 20px 40px;
+      box-shadow:-8px 0 40px rgba(0,0,0,.5);
+      font-family:'Outfit',sans-serif;
+    }
+    #oral-panel.open{transform:translateX(0)}
+    .oral-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .oral-header h2{font-size:1rem;font-weight:700;color:#c0122e;letter-spacing:.04em}
+    #oral-close{background:none;border:none;color:#8a8a8a;font-size:1.2rem;cursor:pointer;padding:4px;transition:color .2s}
+    #oral-close:hover{color:#f2f2f2}
+    .oral-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a8a8a;margin:18px 0 8px}
+    .oral-step{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:6px;font-size:.87rem;color:#c8c8c8;line-height:1.5}
+    .oral-step .step-num{background:#c0122e;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0}
+    .oral-nav-links{display:flex;flex-direction:column;gap:6px}
+    .oral-nav-links a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:.9rem;font-weight:500;color:#c8c8c8;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);text-decoration:none;transition:all .2s}
+    .oral-nav-links a:hover{background:rgba(192,18,46,.12);border-color:rgba(192,18,46,.35);color:#f2f2f2}
+    .oral-nav-links a i{color:#c0122e;width:16px;text-align:center}
+
+    /* ── Section démarche ── */
+    .demarche-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:36px}
+    .demarche-card{
+      background:var(--bg-surface);border:1px solid var(--border);
+      border-radius:var(--radius-md);padding:24px;
+      display:flex;flex-direction:column;gap:12px;
+      transition:var(--tr-base);position:relative;overflow:hidden;
+    }
+    .demarche-card::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--primary),#e8475f);
+      transform:scaleX(0);transform-origin:left;transition:transform var(--tr-base);
+    }
+    .demarche-card:hover::after{transform:scaleX(1)}
+    .demarche-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
+    .demarche-num{font-size:2rem;font-weight:800;color:var(--primary);opacity:.2;font-family:var(--font-mono);line-height:1;margin-bottom:-6px}
+    .demarche-title{font-size:.95rem;font-weight:700;color:var(--text)}
+    .demarche-card p{font-size:.85rem;color:var(--text-muted);line-height:1.65}
+    .demarche-tag{display:inline-block;font-size:.7rem;font-weight:700;background:var(--primary-light);color:var(--primary);border-radius:4px;padding:2px 8px;margin-top:4px;font-family:var(--font-mono)}
+
+    /* ── Q&A Jury ── */
+    .jury-grid{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+    .jury-item{
+      background:var(--bg-surface);border:1px solid var(--border);
+      border-radius:var(--radius-md);overflow:hidden;
+      transition:border-color var(--tr-base);
+    }
+    .jury-item:hover{border-color:var(--border-hover)}
+    .jury-question{
+      display:flex;align-items:center;gap:14px;
+      padding:16px 20px;cursor:pointer;
+      font-size:.95rem;font-weight:600;color:var(--text);
+      user-select:none;
+    }
+    .jury-question .q-badge{
+      background:var(--primary);color:#fff;
+      border-radius:6px;padding:2px 8px;
+      font-size:.72rem;font-weight:800;letter-spacing:.06em;
+      flex-shrink:0;font-family:var(--font-mono);
+    }
+    .jury-question .q-chevron{margin-left:auto;color:var(--text-light);font-size:.85rem;transition:transform var(--tr-fast)}
+    .jury-item.open .q-chevron{transform:rotate(180deg)}
+    .jury-answer{
+      max-height:0;overflow:hidden;
+      transition:max-height .35s cubic-bezier(.4,0,.2,1);
+    }
+    .jury-item.open .jury-answer{max-height:600px}
+    .jury-answer-inner{padding:0 20px 20px;border-top:1px solid var(--border)}
+    .jury-answer-inner p{font-size:.9rem;color:var(--text-muted);line-height:1.8;margin-top:16px}
+    .jury-answer-inner strong{color:var(--text)}
+
+    /* ── Bandeau "lien BTS SIO" ── */
+    .bts-link-banner{
+      background:linear-gradient(135deg,rgba(192,18,46,.15) 0%,rgba(192,18,46,.05) 100%);
+      border:1px solid rgba(192,18,46,.35);border-radius:var(--radius-md);
+      padding:20px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+      margin-top:40px;
+    }
+    .bts-link-banner i{font-size:1.6rem;color:#c0122e;flex-shrink:0}
+    .bts-link-banner h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
+    .bts-link-banner p{font-size:.85rem;color:var(--text-muted)}
+    .bts-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .bts-tag{font-size:.7rem;font-weight:700;background:rgba(192,18,46,.12);border:1px solid rgba(192,18,46,.25);color:#c0122e;border-radius:4px;padding:2px 9px;font-family:var(--font-mono)}
+
+    /* Light mode */
+    [data-theme="light"] #oral-panel{background:#f8f8f6;border-left-color:rgba(192,18,46,.3)}
+    [data-theme="light"] .oral-nav-links a,.oral-step{color:#444}
+    [data-theme="light"] .oral-step{background:rgba(0,0,0,.03)}
+
+    @media(max-width:600px){
+      .stat-grid{grid-template-columns:repeat(2,1fr)}
+      .cas-grid{grid-template-columns:1fr}
+      #oral-panel{width:100%}
+      .demarche-grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
+
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-  
-  <!-- ===== HEADER ===== -->
-  <header id="header" class="header-secondary">
-    <nav class="navbar container" aria-label="Navigation principale">
-      <a href="index.html#header" class="logo" aria-label="Retour à l'accueil">
-      </a>
+  <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
 
-      <button 
-        id="nav-toggle" 
-        class="nav-toggle nav-toggle--menu" 
-        type="button"
-        aria-label="Ouvrir le menu de navigation" 
-        aria-controls="nav-links" 
-        aria-expanded="false"
-        aria-pressed="false"
-      >
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="sr-only">Menu</span>
-      </button>
+  <!-- ── Bouton Mode Oral ── -->
+  <button id="oral-toggle" aria-label="Ouvrir le mode présentation oral">
+    <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+    Mode Oral
+  </button>
 
-      <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html#header" class="nav-link">Accueil</a></li>
-        <li><a href="index.html#about" class="nav-link">À propos</a></li>
-        <li><a href="index.html#competences" class="nav-link">Compétences</a></li>
-        <li><a href="index.html#projets" class="nav-link">Expériences</a></li>
-        <li><a href="index.html#parcours" class="nav-link">Formation</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        <li><a href="Veille-IA-Jeux-Video.html" class="nav-link" aria-current="page">Veille</a></li>
-        <li><a href="CV V2.pdf" download class="btn-nav" aria-label="Télécharger mon CV au format PDF">CV</a></li>
-      </ul>
+  <!-- ── Panel Oral ── -->
+  <aside id="oral-panel" role="complementary" aria-label="Plan de présentation veille" hidden>
+    <div class="oral-header">
+      <h2><i class="fa-solid fa-graduation-cap"></i>&nbsp; Oral BTS SIO</h2>
+      <button id="oral-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <p class="oral-label">Plan de présentation veille</p>
+    <div class="oral-step"><span class="step-num">1</span><span><strong>Pourquoi ce sujet ?</strong> — Lien personnel avec le gaming &amp; l'IA, pertinence BTS SIO</span></div>
+    <div class="oral-step"><span class="step-num">2</span><span><strong>Ma démarche</strong> — Sources, newsletters, conférences (GDC, CES)</span></div>
+    <div class="oral-step"><span class="step-num">3</span><span><strong>Faits clés</strong> — Chiffres 2026, GDC State of the Industry</span></div>
+    <div class="oral-step"><span class="step-num">4</span><span><strong>Cas concrets</strong> — Aura, Asterion, DLSS 4.5, Dead Meat</span></div>
+    <div class="oral-step"><span class="step-num">5</span><span><strong>Enjeux &amp; limites</strong> — Éthique, emploi, environnement</span></div>
+    <div class="oral-step"><span class="step-num">6</span><span><strong>Bilan</strong> — Tendances, impact sur ma formation</span></div>
+
+    <p class="oral-label">Navigation rapide</p>
+    <nav class="oral-nav-links">
+      <a href="#demarche"><i class="fa-solid fa-compass"></i> Démarche de veille</a>
+      <a href="#introduction"><i class="fa-solid fa-chart-bar"></i> Chiffres clés</a>
+      <a href="#timeline"><i class="fa-solid fa-timeline"></i> Timeline 2023–2026</a>
+      <a href="#moteurs"><i class="fa-solid fa-gears"></i> Moteurs de jeu</a>
+      <a href="#pnj"><i class="fa-solid fa-robot"></i> PNJ &amp; Gameplay</a>
+      <a href="#ethique"><i class="fa-solid fa-scale-balanced"></i> Éthique &amp; Emploi</a>
+      <a href="#environnement"><i class="fa-solid fa-leaf"></i> Impact environnemental</a>
+      <a href="#jury"><i class="fa-solid fa-circle-question"></i> Q&amp;A Jury</a>
+      <a href="#sources"><i class="fa-solid fa-book"></i> Sources</a>
     </nav>
-    
-    <div class="header-content container">
-      <div class="page-title-wrapper">
-        <h1>Veille Technologique : <span class="highlight">IA dans les Jeux Vidéo</span></h1>
-        <p class="page-subtitle">Évolution de l'intelligence artificielle dans le gaming depuis 2023</p>
+
+    <p class="oral-label">Lien référentiel BTS SIO</p>
+    <div class="oral-step"><span class="step-num" style="background:#444">B1</span><span>B1.6 — Développement professionnel &amp; veille continue</span></div>
+    <div class="oral-step"><span class="step-num" style="background:#444">B2</span><span>B2.2 — Maintien en condition opérationnelle (évolution techno)</span></div>
+  </aside>
+
+  <script>
+    (function(){
+      var btn=document.getElementById('oral-toggle'),
+          panel=document.getElementById('oral-panel'),
+          cls=document.getElementById('oral-close');
+      btn.addEventListener('click',function(){
+        panel.removeAttribute('hidden');
+        setTimeout(function(){panel.classList.add('open');},10);
+      });
+      cls.addEventListener('click',function(){
+        panel.classList.remove('open');
+        setTimeout(function(){panel.setAttribute('hidden','');},360);
+      });
+      // Q&A accordion
+      document.addEventListener('DOMContentLoaded',function(){
+        document.querySelectorAll('.jury-question').forEach(function(q){
+          q.addEventListener('click',function(){
+            var item=q.closest('.jury-item');
+            item.classList.toggle('open');
+          });
+        });
+      });
+    })();
+  </script>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header" class="header-secondary" role="banner">
+    <nav class="navbar" aria-label="Navigation principale">
+      <div class="navbar-container container">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+          <div class="logo-wrapper">
+            <div class="logo-icon" aria-hidden="true"><span class="logo-symbol">&lt;/&gt;</span></div>
+            <span class="logo-text">
+              <span class="logo-initials">MK</span>
+              <span class="logo-name">PORTFOLIO</span>
+            </span>
+          </div>
+        </a>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button id="theme-toggle" aria-label="Basculer le thème" title="Mode clair">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <button id="nav-toggle" class="nav-toggle" type="button"
+            aria-label="Ouvrir le menu" aria-controls="nav-links" aria-expanded="false">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+        </div>
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="index.html"             class="nav-link">Accueil</a></li>
+          <li><a href="index.html#about"       class="nav-link">À propos</a></li>
+          <li><a href="index.html#competences" class="nav-link">Compétences</a></li>
+          <li><a href="index.html#projets"     class="nav-link">Expériences</a></li>
+          <li><a href="index.html#parcours"    class="nav-link">Formation</a></li>
+          <li><a href="index.html#contact"     class="nav-link">Contact</a></li>
+          <li><a href="Veille-IA-Jeux-Video.html" class="nav-link" aria-current="page">Veille</a></li>
+          <li><a href="CV V2.pdf" download class="btn-nav">CV <i class="fa-solid fa-download" aria-hidden="true"></i></a></li>
+        </ul>
       </div>
+    </nav>
+    <div class="page-title-wrapper container">
+      <h1>Veille Technologique&nbsp;: <span class="accent">IA &amp; Jeux Vidéo</span></h1>
+      <p class="page-subtitle">
+        Rapport 2026 — Convergence de l'IA agentique et de l'infrastructure intelligente
+        &nbsp;·&nbsp; GDC 2026&nbsp;·&nbsp; CES 2026&nbsp;·&nbsp; Newsletters spécialisées
+      </p>
     </div>
   </header>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- ===== MAIN ===== -->
   <main id="main-content" role="main">
 
-    <!-- Introduction -->
+    <!-- ══ DÉMARCHE DE VEILLE ════════════════════════════════════════════════ -->
+    <section id="demarche" class="section section-alt" aria-labelledby="demarche-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="demarche-title" class="section-title">Démarche de Veille</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Comment j'ai collecté, filtré et analysé l'information</p>
+        </div>
+
+        <div class="demarche-grid">
+          <div class="demarche-card">
+            <div class="demarche-num">01</div>
+            <div class="demarche-title"><i class="fa-solid fa-crosshairs" style="color:#c0122e;margin-right:8px"></i>Choix du sujet</div>
+            <p>J'ai choisi <strong>l'IA dans les jeux vidéo</strong> car c'est un croisement entre ma passion personnelle pour le gaming et mes études en développement. Ce sujet évolue très vite et impacte directement les métiers de la tech.</p>
+            <span class="demarche-tag">Passion + Formation</span>
+          </div>
+
+          <div class="demarche-card">
+            <div class="demarche-num">02</div>
+            <div class="demarche-title"><i class="fa-solid fa-rss" style="color:#c0122e;margin-right:8px"></i>Sources primaires</div>
+            <p>Conférences officielles : <strong>GDC 2026</strong> (Game Developers Conference), <strong>CES 2026</strong> (Consumer Electronics Show), rapports NVIDIA, Microsoft et Unity publiés officiellement.</p>
+            <span class="demarche-tag">GDC · CES · Éditeurs officiels</span>
+          </div>
+
+          <div class="demarche-card">
+            <div class="demarche-num">03</div>
+            <div class="demarche-title"><i class="fa-solid fa-newspaper" style="color:#c0122e;margin-right:8px"></i>Veille continue</div>
+            <p>Newsletters spécialisées, flux RSS sur des sites comme GamesMarkt, StorageReview, GamingTrend — consultés régulièrement pour suivre les annonces et analyses de l'industrie.</p>
+            <span class="demarche-tag">Newsletters · RSS · Presse spécialisée</span>
+          </div>
+
+          <div class="demarche-card">
+            <div class="demarche-num">04</div>
+            <div class="demarche-title"><i class="fa-solid fa-filter" style="color:#c0122e;margin-right:8px"></i>Sélection &amp; recoupement</div>
+            <p>Chaque information est <strong>vérifiée sur au moins deux sources indépendantes</strong>. Les chiffres du rapport GDC 2026 ont été croisés avec des analyses de presse et des déclarations officielles d'entreprises.</p>
+            <span class="demarche-tag">Double vérification · Sources citées</span>
+          </div>
+        </div>
+
+        <!-- Lien BTS SIO -->
+        <div class="bts-link-banner">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div>
+            <h4>Compétences BTS SIO mobilisées par cette veille</h4>
+            <p>Cette veille s'inscrit dans le référentiel du BTS SIO et développe des compétences clés pour le technicien en informatique.</p>
+            <div class="bts-tags">
+              <span class="bts-tag">B1.6 — Développement professionnel</span>
+              <span class="bts-tag">B2.2 — Maintien en condition opérationnelle</span>
+              <span class="bts-tag">Analyse critique de l'information</span>
+              <span class="bts-tag">Technologies émergentes</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ INTRODUCTION ══════════════════════════════════════════════════════ -->
     <section id="introduction" class="section" aria-labelledby="intro-title">
       <div class="container">
         <div class="section-header">
           <h2 id="intro-title" class="section-title">Introduction</h2>
-          <div class="title-underline" aria-hidden="true"></div>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">De l'IA réactive à l'IA agentique — l'ère de l'impact concret</p>
         </div>
+
+        <!-- Navigation rapide -->
+        <nav class="veille-nav" aria-label="Sections de la veille">
+          <a href="#demarche"><i class="fa-solid fa-compass"></i> Démarche</a>
+          <a href="#timeline"><i class="fa-solid fa-timeline"></i> Timeline</a>
+          <a href="#infrastructure"><i class="fa-solid fa-server"></i> Infrastructure</a>
+          <a href="#moteurs"><i class="fa-solid fa-gears"></i> Moteurs de jeu</a>
+          <a href="#rendu"><i class="fa-solid fa-gem"></i> Rendu</a>
+          <a href="#pnj"><i class="fa-solid fa-robot"></i> PNJ</a>
+          <a href="#ethique"><i class="fa-solid fa-scale-balanced"></i> Éthique</a>
+          <a href="#environnement"><i class="fa-solid fa-leaf"></i> Environnement</a>
+          <a href="#tendances"><i class="fa-solid fa-chart-line"></i> Tendances</a>
+          <a href="#jury"><i class="fa-solid fa-circle-question"></i> Q&amp;A Jury</a>
+          <a href="#sources"><i class="fa-solid fa-book"></i> Sources</a>
+        </nav>
 
         <div class="about-text">
           <p>
-            L'intelligence artificielle révolutionne l'industrie du jeu vidéo depuis plusieurs années, mais l'année 2023 a marqué un tournant décisif avec l'émergence de nouvelles technologies et applications. Cette veille technologique retrace les principales évolutions de l'IA dans les jeux vidéo de 2023 à aujourd'hui (2025).
+            Le secteur du jeu vidéo en <strong>2026</strong> traverse une phase de restructuration profonde, 
+            marquée par le passage d'une intelligence artificielle <em>réactive</em> à une intelligence 
+            artificielle <strong>agentique</strong>. Cette évolution ne se limite plus à l'intégration 
+            de fonctionnalités isolées, mais redéfinit l'intégralité de la chaîne de valeur — de la 
+            conception architecturale des moteurs de jeu jusqu'à l'interaction psychologique entre le 
+            joueur et les personnages non-joueurs.
           </p>
           <p>
-            Des NPCs (Non-Player Characters) plus intelligents aux systèmes de génération procédurale, en passant par l'assistance au développement et la personnalisation de l'expérience de jeu, l'IA transforme chaque aspect du gaming moderne.
+            L'année 2026 est désormais perçue comme <strong>l'ère de l'impact concret</strong>, 
+            où les alliances entre technologie et humain visent à amplifier la créativité plutôt qu'à 
+            simplement automatiser des tâches répétitives. Les données issues des conférences majeures 
+            (<strong>GDC 2026</strong>, <strong>CES 2026</strong>) mettent en lumière une industrie qui, 
+            bien que confrontée à des défis éthiques et environnementaux sans précédent, mise sur une 
+            infrastructure distribuée et des modèles d'IA à contexte étendu pour franchir la vallée de l'étrange.
           </p>
+        </div>
+
+        <!-- Chiffres clés -->
+        <div class="stat-grid" aria-label="Chiffres clés 2026">
+          <div class="stat-card">
+            <div class="stat-number">52%</div>
+            <div class="stat-label">des développeurs estiment que l'IA générative <strong>nuit à l'industrie</strong> — GDC 2026</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">×2</div>
+            <div class="stat-label">accélération de production avec l'agent <strong>Aura</strong> sur Unreal Engine</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">240+</div>
+            <div class="stat-label">FPS en 4K avec <strong>DLSS 4.5</strong> et la génération de trames 6X</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">72%</div>
+            <div class="stat-label">des adolescents utilisent un <strong>compagnon IA</strong> dans leurs jeux</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">28%</div>
+            <div class="stat-label">des professionnels <strong>licenciés</strong> ces deux dernières années</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">36%</div>
+            <div class="stat-label">des devs utilisent l'IA générative dans leur <strong>travail quotidien</strong></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Timeline des innovations -->
-    <section id="timeline" class="section section-dark" aria-labelledby="timeline-title">
+    <!-- ══ TIMELINE ══════════════════════════════════════════════════════════ -->
+    <section id="timeline" class="section section-alt" aria-labelledby="timeline-title">
       <div class="container">
         <div class="section-header">
           <h2 id="timeline-title" class="section-title">Timeline des Innovations</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Les principales avancées de l'IA dans les jeux vidéo</p>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Évolution de l'IA dans le jeu vidéo de 2023 à 2026</p>
         </div>
 
         <div class="education-timeline" role="list">
-          
-          <!-- 2025 -->
+
+          <!-- 2026 -->
           <article class="education-item current" role="listitem">
             <div class="education-year">
-              <span class="year-badge">2025</span>
-              <span class="status-badge status-current" aria-label="En cours">Actuel</span>
+              <span class="year-badge">2026</span>
+              <span class="status-badge status-current">Actuel</span>
             </div>
             <div class="education-content">
-              <div class="education-icon" aria-hidden="true">
-                <i class="fa-solid fa-robot"></i>
-              </div>
+              <div class="education-icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
               <div class="education-details">
-                <h3>IA Générative et NPCs Autonomes</h3>
+                <h3>IA Agentique — L'Impact Concret</h3>
                 <div class="education-description">
-                  <p>
-                    <strong>NPCs avec dialogues génératifs</strong> - Les personnages non-joueurs utilisent désormais des modèles de langage pour générer des dialogues en temps réel, créant des interactions uniques à chaque partie.
-                  </p>
-                  <ul class="education-skills" role="list">
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Intégration de ChatGPT et autres LLM dans les jeux</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> NPCs avec mémoire persistante et personnalités uniques</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Génération de quêtes et d'histoires dynamiques</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> IA d'adaptation de difficulté en temps réel</li>
+                  <p>L'IA passe de l'assistance ponctuelle à des <strong>agents collaboratifs</strong> agissant comme de véritables coéquipiers. Les moteurs intègrent l'IA nativement, les PNJ acquièrent une mémoire persistante et le rendu graphique atteint des sommets inédits via le DLSS 4.5.</p>
+                  <ul class="education-skills">
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Aura</strong> (Ramen VR) : agent IA pour Unreal Engine — production ×2 plus rapide</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>DLSS 4.5</strong> et génération de 5 trames supplémentaires (6X Multi Frame Gen, 240+ FPS en 4K)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Asterion</strong> (MIR5 × NVIDIA) : premier boss de MMORPG qui apprend en temps réel</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tencent <strong>VISVISE</strong> : auto-rigging, auto-skinning, génération de RPG complets (GDC 2026)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>52%</strong> des développeurs signalent un impact négatif de l'IA générative (GDC 2026)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Context Engineering</strong> : orchestration de systèmes complexes comme compétence clé</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2025 -->
+          <article class="education-item" role="listitem">
+            <div class="education-year">
+              <span class="year-badge">2025</span>
+              <span class="status-badge status-completed">Complété</span>
+            </div>
+            <div class="education-content">
+              <div class="education-icon" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+              <div class="education-details">
+                <h3>PNJ Mémorieux et Moteurs IA-Natifs</h3>
+                <div class="education-description">
+                  <p>2025 amorce le virage vers des PNJ dotés de <strong>mémoire à long terme</strong> et de personnalités évolutives. Unreal Engine 5.7 pose les bases de l'IA native dans les moteurs.</p>
+                  <ul class="education-skills">
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Unreal Engine 5.7</strong> : IA native intégrée au cœur de l'architecture</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>NVIDIA ACE</strong> : mémoire long-terme pour les PNJ coéquipiers</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Premières intégrations de <strong>SLM</strong> (Small Language Models) dans les jeux en temps réel</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> 30% des devs estimaient déjà l'IA néfaste (contre 18% en 2024)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Impact CO₂ de l'IA : équivalent à la ville de New York sur l'année entière</li>
                   </ul>
                 </div>
               </div>
@@ -141,24 +528,20 @@
           <article class="education-item" role="listitem">
             <div class="education-year">
               <span class="year-badge">2024</span>
-              <span class="status-badge status-completed" aria-label="Année complétée">Complété</span>
+              <span class="status-badge status-completed">Complété</span>
             </div>
             <div class="education-content">
-              <div class="education-icon" aria-hidden="true">
-                <i class="fa-solid fa-brain"></i>
-              </div>
+              <div class="education-icon" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
               <div class="education-details">
-                <h3>IA de Génération de Contenu et Assistance au Développement</h3>
+                <h3>IA Générative &amp; Assistance au Développement</h3>
                 <div class="education-description">
-                  <p>
-                    <strong>Outils d'IA pour développeurs</strong> - Les studios utilisent massivement l'IA pour accélérer le développement et créer du contenu.
-                  </p>
-                  <ul class="education-skills" role="list">
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Génération automatique de textures et assets 3D</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Outils d'IA dans Unity et Unreal Engine (MetaHuman, etc.)</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Systèmes de test automatisés avec IA</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> IA pour l'optimisation des performances</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Génération procédurale de mondes ouverts massifs</li>
+                  <p>Les studios adoptent massivement l'IA pour générer des assets et accélérer leur pipeline. Les outils de suggestion de code dominent.</p>
+                  <ul class="education-skills">
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Unity Muse &amp; Sentis</strong> : génération de textures, sprites et inférence on-device</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>NVIDIA ACE</strong> : PNJ avec voix synthétique et animation faciale (démo Covert Protocol)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Inworld AI</strong> : PNJ avec mémoire et personnalité dans plusieurs jeux</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> IA pour les tests automatisés et l'optimisation des performances</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Seulement <strong>18%</strong> des devs estimaient l'IA néfaste à ce stade</li>
                   </ul>
                 </div>
               </div>
@@ -169,24 +552,20 @@
           <article class="education-item" role="listitem">
             <div class="education-year">
               <span class="year-badge">2023</span>
-              <span class="status-badge status-completed" aria-label="Année complétée">Complété</span>
+              <span class="status-badge status-completed">Complété</span>
             </div>
             <div class="education-content">
-              <div class="education-icon" aria-hidden="true">
-                <i class="fa-solid fa-gamepad"></i>
-              </div>
+              <div class="education-icon" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
               <div class="education-details">
                 <h3>Démocratisation de l'IA dans le Gaming</h3>
                 <div class="education-description">
-                  <p>
-                    <strong>Année charnière</strong> - 2023 a vu l'adoption massive de technologies d'IA par les studios AAA et indépendants.
-                  </p>
-                  <ul class="education-skills" role="list">
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Lancement de jeux utilisant l'IA générative (Inworld AI, Convai)</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Amélioration des systèmes d'IA comportementale (behavior trees avancés)</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> IA pour l'anti-triche et la modération automatique</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Recommandation personnalisée de jeux par IA</li>
-                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Premiers essais de NPCs avec conversations naturelles</li>
+                  <p>Année charnière : explosion des LLM grand public et premières expérimentations de dialogues naturels avec les PNJ.</p>
+                  <ul class="education-skills">
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Intégration de ChatGPT et autres LLM dans des prototypes de jeux</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Premiers PNJ avec conversations naturelles (Convai, Inworld AI)</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> IA pour l'anti-triche et la modération automatique du chat</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Génération procédurale avancée dans les mondes ouverts</li>
+                    <li><i class="fa-solid fa-check" aria-hidden="true"></i> Outils de suggestion de code (snippets) : première génération d'assistants dev</li>
                   </ul>
                 </div>
               </div>
@@ -197,457 +576,617 @@
       </div>
     </section>
 
-    <!-- Domaines d'application -->
-    <section id="domaines" class="section" aria-labelledby="domaines-title">
+    <!-- ══ INFRASTRUCTURE ════════════════════════════════════════════════════ -->
+    <section id="infrastructure" class="section" aria-labelledby="infra-title">
       <div class="container">
         <div class="section-header">
-          <h2 id="domaines-title" class="section-title">Domaines d'Application de l'IA</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Comment l'IA transforme les différents aspects du jeu vidéo</p>
+          <h2 id="infra-title" class="section-title">Infrastructure &amp; Intelligence de Dépôt</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Super-usines d'IA, calcul distribué et repository intelligence</p>
         </div>
 
-        <div class="formation-grid">
-          
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <h3>NPCs Intelligents</h3>
-            <p class="formation-period">Personnages Non-Joueurs</p>
-            <p class="formation-desc">
-              Les NPCs utilisent désormais l'apprentissage par renforcement et les modèles de langage pour des interactions naturelles, des comportements adaptatifs et des dialogues dynamiques qui évoluent selon les actions du joueur.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Reinforcement Learning</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">LLM</span>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-mountain"></i>
-            </div>
-            <h3>Génération Procédurale</h3>
-            <p class="formation-period">Création Automatique de Contenu</p>
-            <p class="formation-desc">
-              L'IA génère des mondes, des niveaux, des quêtes et des objets de manière procédurale, offrant une expérience unique à chaque partie. Les réseaux de neurones créent des environnements cohérents et variés.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Neural Networks</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Procedural Generation</span>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-palette"></i>
-            </div>
-            <h3>Assistance au Développement</h3>
-            <p class="formation-period">Outils pour Créateurs</p>
-            <p class="formation-desc">
-              Les développeurs utilisent l'IA pour générer des assets (textures, modèles 3D, animations), tester automatiquement les jeux, optimiser les performances et créer des dialogues de manière plus efficace.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Asset Generation</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Auto Testing</span>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-sliders"></i>
-            </div>
-            <h3>Personnalisation de l'Expérience</h3>
-            <p class="formation-period">Adaptation au Joueur</p>
-            <p class="formation-desc">
-              L'IA analyse le comportement du joueur pour ajuster la difficulté en temps réel, recommander du contenu personnalisé, et créer des expériences sur mesure qui s'adaptent aux préférences individuelles.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Machine Learning</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Adaptive Difficulty</span>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3>Sécurité et Modération</h3>
-            <p class="formation-period">Protection et Éthique</p>
-            <p class="formation-desc">
-              L'IA détecte les comportements de triche, modère automatiquement les contenus toxiques dans les chats, et assure une expérience de jeu équitable et sécurisée pour tous les joueurs.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Anti-Cheat</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Content Moderation</span>
-            </div>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-comments"></i>
-            </div>
-            <h3>Dialogues et Narratives</h3>
-            <p class="formation-period">Stories Dynamiques</p>
-            <p class="formation-desc">
-              Les systèmes d'IA génèrent des dialogues contextuels, créent des branches narratives dynamiques, et permettent aux joueurs d'influencer l'histoire de manière plus naturelle et immersive.
-            </p>
-            <div class="card-tags" style="margin-top: 15px;">
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Narrative AI</span>
-              <span style="display: inline-block; background: rgba(178, 10, 44, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85em; margin: 3px;">Dynamic Storytelling</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Technologies et Outils -->
-    <section id="technologies" class="section section-dark" aria-labelledby="technologies-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="technologies-title" class="section-title">Technologies et Outils Principaux</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Les outils et frameworks utilisés par l'industrie</p>
-        </div>
-
-        <div class="competences-grid">
-          
-          <div class="competence-category">
-            <div class="category-icon">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <h3>Moteurs de Jeu</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">Unity ML-Agents</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="85"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Unreal Engine (MetaHuman)</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="90"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Godot AI Integration</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="70"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="competence-category">
-            <div class="category-icon">
-              <i class="fa-solid fa-brain"></i>
-            </div>
-            <h3>Frameworks IA</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">PyTorch / TensorFlow</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="85"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">OpenAI GPT (Intégration)</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="80"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Inworld AI / Convai</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="75"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="competence-category">
-            <div class="category-icon">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <h3>Génération de Contenu</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">Stable Diffusion (Assets)</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="80"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Midjourney / DALL-E</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="75"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Procedural Generation Tools</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" data-progress="70"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Cas d'usage concrets -->
-    <section id="cas-usage" class="section" aria-labelledby="cas-usage-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="cas-usage-title" class="section-title">Cas d'Usage Concrets</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Exemples réels d'application de l'IA dans les jeux</p>
-        </div>
-
-        <div class="timeline">
-          
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-card">
-                <div class="card-body">
-                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2024</span>
-                  <h3>NVIDIA ACE (Avatar Cloud Engine)</h3>
-                  <p class="card-role">NPCs avec IA vocale et faciale</p>
-                  <p style="margin-top: 10px; color: var(--text-muted);">
-                    NVIDIA a développé une plateforme permettant de créer des NPCs avec des conversations naturelles, une synthèse vocale réaliste et des animations faciales synchronisées. Utilisé dans des démos comme "Covert Protocol" et "Kairos".
-                  </p>
-                  <ul class="card-tags">
-                    <li>Speech-to-Text</li>
-                    <li>LLM</li>
-                    <li>Text-to-Speech</li>
-                    <li>Animation faciale</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-card">
-                <div class="card-body">
-                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2023-2024</span>
-                  <h3>Inworld AI</h3>
-                  <p class="card-role">Plateforme de création de NPCs intelligents</p>
-                  <p style="margin-top: 10px; color: var(--text-muted);">
-                    Plateforme utilisée par des studios pour créer des NPCs avec mémoire, personnalité et capacités de conversation naturelle. Intégrée dans des jeux comme "Life is Strange" et utilisée par des développeurs indépendants.
-                  </p>
-                  <ul class="card-tags">
-                    <li>Conversational AI</li>
-                    <li>Memory Systems</li>
-                    <li>Personality Engine</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-card">
-                <div class="card-body">
-                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2024</span>
-                  <h3>Unity Sentis</h3>
-                  <p class="card-role">IA exécutée directement dans Unity</p>
-                  <p style="margin-top: 10px; color: var(--text-muted);">
-                    Unity a introduit Sentis, permettant d'exécuter des modèles d'IA directement dans le moteur de jeu, sans connexion cloud. Cela permet des NPCs plus réactifs et une meilleure performance.
-                  </p>
-                  <ul class="card-tags">
-                    <li>On-Device AI</li>
-                    <li>Unity</li>
-                    <li>Performance</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-card">
-                <div class="card-body">
-                  <span class="card-date"><i class="fa-solid fa-calendar"></i> 2023-2025</span>
-                  <h3>Génération Procédurale Avancée</h3>
-                  <p class="card-role">Mondes ouverts générés par IA</p>
-                  <p style="margin-top: 10px; color: var(--text-muted);">
-                    Des jeux comme "No Man's Sky" continuent d'utiliser l'IA pour générer des planètes, tandis que des studios développent des systèmes pour créer des villes et environnements entiers avec cohérence et variété.
-                  </p>
-                  <ul class="card-tags">
-                    <li>Procedural Generation</li>
-                    <li>World Building</li>
-                    <li>Neural Networks</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Enjeux et Défis -->
-    <section id="enjeux" class="section section-dark" aria-labelledby="enjeux-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="enjeux-title" class="section-title">Enjeux et Défis</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Les défis actuels et futurs de l'IA dans le gaming</p>
-        </div>
-
-        <div class="formation-grid">
-          
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-exclamation-triangle"></i>
-            </div>
-            <h3>Défis Techniques</h3>
-            <p class="formation-desc">
-              <strong>Performance et Latence</strong> - L'exécution de modèles d'IA en temps réel nécessite des optimisations importantes. Les développeurs doivent équilibrer qualité et performance, surtout pour les jeux mobiles.
-            </p>
-            <p class="formation-desc" style="margin-top: 10px;">
-              <strong>Coût de Calcul</strong> - Les modèles d'IA complexes nécessitent des ressources importantes, que ce soit côté serveur (cloud) ou côté client (GPU puissants).
-            </p>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-gavel"></i>
-            </div>
-            <h3>Enjeux Éthiques</h3>
-            <p class="formation-desc">
-              <strong>Remploi des Artistes</strong> - L'utilisation de l'IA pour générer des assets soulève des questions sur l'emploi des artistes et concepteurs dans l'industrie.
-            </p>
-            <p class="formation-desc" style="margin-top: 10px;">
-              <strong>Contenu Inapproprié</strong> - Les NPCs avec IA générative peuvent produire des dialogues inappropriés, nécessitant des systèmes de modération robustes.
-            </p>
-          </div>
-
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-money-bill-wave"></i>
-            </div>
-            <h3>Modèles Économiques</h3>
-            <p class="formation-desc">
-              <strong>Coûts d'Infrastructure</strong> - L'hébergement de services d'IA cloud représente un coût significatif pour les studios, surtout pour les jeux avec beaucoup de joueurs simultanés.
-            </p>
-            <p class="formation-desc" style="margin-top: 10px;">
-              <strong>Nouveaux Modèles</strong> - Les studios explorent de nouveaux modèles économiques, comme des NPCs premium avec IA plus avancée.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Perspectives Futures -->
-    <section id="perspectives" class="section" aria-labelledby="perspectives-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="perspectives-title" class="section-title">Perspectives Futures</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Où va l'IA dans les jeux vidéo ?</p>
-        </div>
-
-        <div class="about-text">
-          <h3 style="margin-top: 20px; color: var(--primary-color);">Tendances à Surveiller</h3>
-          <ul style="margin-left: 20px; margin-top: 15px; line-height: 2;">
-            <li><strong>IA Multi-Agent</strong> - Des systèmes où plusieurs NPCs interagissent entre eux de manière autonome, créant des écosystèmes vivants.</li>
-            <li><strong>IA Émotionnelle</strong> - Des NPCs capables de reconnaître et réagir aux émotions du joueur via l'analyse de la voix, des expressions faciales ou du gameplay.</li>
-            <li><strong>Génération de Jeux Entiers</strong> - Des IA capables de créer des jeux complets de manière autonome, ouvrant la voie à des expériences ultra-personnalisées.</li>
-            <li><strong>IA dans les Jeux Mobiles</strong> - Optimisation des modèles pour fonctionner efficacement sur smartphones, rendant l'IA accessible à tous.</li>
-            <li><strong>Collaboration Humain-IA</strong> - Des outils permettant aux développeurs de travailler main dans la main avec l'IA pour créer des expériences uniques.</li>
-          </ul>
-
-          <h3 style="margin-top: 30px; color: var(--primary-color);">Impact sur l'Industrie</h3>
-          <p style="margin-top: 15px;">
-            L'IA transforme non seulement la façon dont les jeux sont créés, mais aussi comment ils sont joués. Les développeurs indépendants ont maintenant accès à des outils puissants qui étaient autrefois réservés aux grands studios. Cette démocratisation permet une créativité accrue et des expériences de jeu plus variées et personnalisées.
+        <div class="about-text" style="margin-bottom:36px">
+          <p>
+            En 2026, l'industrie s'éloigne de la simple expansion des centres de données pour privilégier 
+            l'<strong>efficacité et la densité de calcul</strong> au sein de réseaux distribués. 
+            Microsoft et d'autres leaders technologiques ont introduit le concept de 
+            <strong>«&#8239;super-usines&#8239;» d'IA liées</strong>, fonctionnant comme un système de 
+            contrôle du trafic aérien pour les charges de travail — routant dynamiquement la puissance de 
+            calcul afin qu'aucun cycle ne soit gaspillé.
           </p>
-          <p style="margin-top: 15px;">
-            À mesure que l'IA continue d'évoluer, nous pouvons nous attendre à voir des jeux où chaque partie est véritablement unique, où les NPCs ont leurs propres "vies" et où les frontières entre réalité et fiction deviennent de plus en plus floues.
+        </div>
+
+        <div class="cas-grid">
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-code-branch"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Intelligence de dépôt</div>
+                <div class="cas-meta">Repository Intelligence · 2026</div>
+              </div>
+            </div>
+            <p>Contrairement aux outils de 2024 qui suggéraient des lignes isolées, l'IA de 2026 comprend <strong>l'historique complet du projet</strong>, analyse les motifs de changement, anticipe les erreurs architecturales et corrige automatiquement les bugs de routine avec une précision chirurgicale.</p>
+            <ul class="card-tags"><li>Context Window étendu</li><li>Architecture-aware</li><li>Auto-fix</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Super-usines d'IA liées</div>
+                <div class="cas-meta">Microsoft · Infrastructure distribuée</div>
+              </div>
+            </div>
+            <p>Des réseaux de centres de données interconnectés fonctionnent comme un <strong>système de contrôle de trafic aérien</strong>, optimisant le routage des charges de travail watt par watt. L'intégration de puces quantiques (Majorana 1, qubits topologiques) permet la correction d'erreurs en temps réel et ouvre la voie à des simulations physiques inédites.</p>
+            <ul class="card-tags"><li>Calcul distribué</li><li>Majorana 1</li><li>Qubits topologiques</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Agents collaboratifs</div>
+                <div class="cas-meta">Paradigme post-chatbot · 2026</div>
+              </div>
+            </div>
+            <p>L'IA ne répond plus — elle <strong>agit</strong>. Les agents planifient des tâches, coordonnent des sous-agents, gèrent des fichiers et orchestrent des workflows complets. Le développeur devient chef d'orchestre, définissant des objectifs plutôt que des instructions ligne par ligne.</p>
+            <ul class="card-tags"><li>Orchestration</li><li>Multi-agent</li><li>Workflow complet</li></ul>
+          </div>
+        </div>
+
+        <!-- Tableau évolution 2024 → 2026 -->
+        <h3 style="margin:40px 0 16px;font-size:1.15rem;">Évolution des capacités IA (2024 → 2026)</h3>
+        <div class="data-table-wrapper">
+          <table class="data-table" aria-label="Évolution des capacités IA en infrastructure">
+            <thead>
+              <tr><th>Caractéristique</th><th>État en 2024</th><th>État en 2026</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Gestion de l'infrastructure</strong></td><td>Centres de données centralisés</td><td style="color:var(--primary)">Super-usines d'IA distribuées et dynamiques</td></tr>
+              <tr><td><strong>Intelligence logicielle</strong></td><td>Suggestion de lignes de code (snippets)</td><td style="color:var(--primary)">Intelligence de dépôt et compréhension contextuelle</td></tr>
+              <tr><td><strong>Modèle d'interaction</strong></td><td>Chatbot réactif (Q&amp;A)</td><td style="color:var(--primary)">Agents collaboratifs agissant comme coéquipiers</td></tr>
+              <tr><td><strong>Optimisation du calcul</strong></td><td>Expansion matérielle brute</td><td style="color:var(--primary)">Routage dynamique pour une efficacité maximale</td></tr>
+              <tr><td><strong>Support développement</strong></td><td>Aide ponctuelle au débogage</td><td style="color:var(--primary)">Orchestration complète des flux de travail</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ MOTEURS DE JEU ════════════════════════════════════════════════════ -->
+    <section id="moteurs" class="section section-alt" aria-labelledby="moteurs-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="moteurs-title" class="section-title">Moteurs de Jeu &amp; Création IA</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">L'IA n'est plus un plug-in — c'est le cœur de l'architecture</p>
+        </div>
+
+        <!-- Tableau comparatif -->
+        <div class="data-table-wrapper">
+          <table class="data-table" aria-label="Suites de création assistées par IA (GDC 2026)">
+            <thead>
+              <tr><th>Outil / Suite</th><th>Développeur</th><th>Fonctionnalités clés</th><th>Impact mesuré</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Aura</strong></td><td>Ramen VR (Unreal)</td><td>Agents de codage et d'éditeur contextuels (C++ &amp; Blueprints)</td><td style="color:var(--primary);font-weight:600">Production ×2 plus rapide</td></tr>
+              <tr><td><strong>VISVISE</strong></td><td>Tencent Games</td><td>Animation 3D, auto-rigging, auto-skinning</td><td>Modularité du développement</td></tr>
+              <tr><td><strong>Unity Sentis</strong></td><td>Unity Software</td><td>Moteur d'inférence en temps réel (on-device CPU/GPU)</td><td>Zéro coût cloud pour l'IA</td></tr>
+              <tr><td><strong>MagicDawn</strong></td><td>Tencent Games</td><td>Illumination globale IA, audio spatial intelligent</td><td>Fidélité visuelle accrue</td></tr>
+              <tr><td><strong>Unity Muse</strong></td><td>Unity Software</td><td>Génération de textures et sprites 2D/3D par prompts</td><td>Itération créative rapide</td></tr>
+              <tr><td><strong>ASI World</strong></td><td>Tencent Games</td><td>Génération de RPG tactiques complets depuis un prompt</td><td>Pipeline modulaire bout-en-bout</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Étude de cas Aura -->
+        <div class="alert-box">
+          <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          <p>
+            <strong>Étude de cas — Sinn Studio &amp; Aura :</strong> l'utilisation d'Aura a permis de 
+            diviser par deux le temps de production du jeu <em>Zombonks</em>, expédié en accès anticipé en 
+            seulement <strong>5 mois</strong>. L'accélération la plus spectaculaire concerne le pipeline 
+            d'assets environnementaux&nbsp;: de <strong>2-3 jours à 4-5 heures par niveau</strong>. 
+            Deux agents cohabitent&nbsp;: l'<em>agent éditeur</em> (éclairage, post-traitement) et 
+            l'<em>agent de codage</em> (C++ et Blueprints contextuels).
+          </p>
+        </div>
+
+        <div class="cas-grid" style="margin-top:36px">
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-cubes"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Unity 6 — Démocratisation</div>
+                <div class="cas-meta">Unity Software · Muse + Sentis</div>
+              </div>
+            </div>
+            <p><strong>Muse</strong> améliore les flux créatifs (textures, sprites, animations) tandis que <strong>Sentis</strong> intègre des réseaux neuronaux directement dans le runtime du jeu. Les calculs d'IA — logique des PNJ, transformations physiques — s'exécutent <em>localement</em> sur le hardware de l'utilisateur, sans latence cloud.</p>
+            <ul class="card-tags"><li>On-device AI</li><li>Neural runtime</li><li>Zéro latence</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-dragon"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Tencent VISVISE &amp; ASI World</div>
+                <div class="cas-meta">Tencent Games · GDC 2026</div>
+              </div>
+            </div>
+            <p>VISVISE permet aux équipes artistiques de se concentrer sur la <strong>vision esthétique</strong> en automatisant le rigging et le skinning. ASI World va plus loin&nbsp;: générer des jeux RPG tactiques complets depuis un simple prompt lors d'une session prolongée, en décomposant le développement en pipelines modulaires de narration, scène et production d'assets.</p>
+            <ul class="card-tags"><li>Auto-rigging</li><li>RPG génératif</li><li>Pipeline modulaire</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RENDU & HARDWARE ══════════════════════════════════════════════════ -->
+    <section id="rendu" class="section" aria-labelledby="rendu-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="rendu-title" class="section-title">Rendu Graphique &amp; Hardware</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">NVIDIA CES 2026 — Le DLSS 4.5 redéfinit les standards visuels</p>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="data-table" aria-label="Innovations NVIDIA CES 2026">
+            <thead>
+              <tr><th>Technologie</th><th>Innovation majeure</th><th>Bénéfice joueur</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>DLSS 4.5</strong></td><td>Transformateur 2ᵉ génération pour la Super Résolution</td><td>Image stable, nette, sans ghosting</td></tr>
+              <tr><td><strong>6× Multi Frame Gen</strong></td><td>Génération dynamique de 5 trames par trame rendue</td><td style="color:var(--primary);font-weight:600">240+ FPS en 4K avec path tracing intégral</td></tr>
+              <tr><td><strong>G-SYNC Pulsar</strong></td><td>Strobing de rétroéclairage variable &gt;1 000 Hz effectif</td><td>Élimination totale du flou de mouvement</td></tr>
+              <tr><td><strong>RTX Remix Logic</strong></td><td>Mods réactifs aux événements de gameplay</td><td>Remasters dynamiques et vivants</td></tr>
+              <tr><td><strong>NVIDIA ACE (update)</strong></td><td>Mémoire long-terme pour PNJ coéquipiers</td><td>Guides intelligents adaptés au joueur (PUBG)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-box">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+          <p>
+            <strong>RTX Remix Logic :</strong> au lieu d'appliquer des améliorations visuelles statiques, 
+            cette technologie permet de déclencher des changements de lumière, de matériaux ou d'effets de 
+            particules <em>en réponse aux actions du joueur</em> — ouvrir une porte, approcher un ennemi. 
+            Les remasters deviennent des expériences narrativement cohérentes et dynamiques.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Sources et Ressources -->
-    <section id="sources" class="section section-dark" aria-labelledby="sources-title">
+    <!-- ══ PNJ & GAMEPLAY ════════════════════════════════════════════════════ -->
+    <section id="pnj" class="section section-alt" aria-labelledby="pnj-title">
       <div class="container">
         <div class="section-header">
-          <h2 id="sources-title" class="section-title">Sources et Ressources</h2>
-          <div class="title-underline" aria-hidden="true"></div>
-          <p class="section-subtitle">Pour approfondir le sujet</p>
+          <h2 id="pnj-title" class="section-title">PNJ &amp; Gameplay Génératif</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">La mémoire : nouveau facteur d'adhérence des jeux en 2026</p>
         </div>
 
-        <div class="formation-grid">
-          
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-link"></i>
+        <div class="about-text" style="margin-bottom:40px">
+          <p>
+            En 2026, l'industrie s'éloigne des arbres de dialogue statiques pour adopter l'IA 
+            <strong>«&#8239;Memory-First&#8239;»</strong>. Les joueurs attendent désormais des PNJ qu'ils 
+            se souviennent de leur style de jeu, de leurs choix précédents et même de leur ton de voix 
+            sur <em>plusieurs sessions</em>. Les statistiques montrent que <strong>72%</strong> des 
+            adolescents utilisent désormais des compagnons IA, et près de <strong>30%</strong> des adultes 
+            entretiennent des relations complexes avec des agents virtuels. Si l'IA se souvient d'un 
+            détail que le joueur a lui-même oublié, elle franchit la vallée de l'étrange pour devenir 
+            un véritable interlocuteur.
+          </p>
+        </div>
+
+        <!-- Cas d'usage -->
+        <div class="cas-grid">
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Asterion — Le Boss qui Apprend</div>
+                <div class="cas-meta">MIR5 · Wemade Next × NVIDIA ACE</div>
+              </div>
             </div>
-            <h3>Plateformes et Outils</h3>
-            <ul style="margin-top: 15px; text-align: left; line-height: 2;">
-              <li><a href="https://unity.com/products/machine-learning-agents" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color);">Unity ML-Agents</a></li>
-              <li><a href="https://www.inworld.ai/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color);">Inworld AI</a></li>
-              <li><a href="https://developer.nvidia.com/ace" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color);">NVIDIA ACE</a></li>
-              <li><a href="https://www.unrealengine.com/en-US/metahuman" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color);">Unreal MetaHuman</a></li>
-            </ul>
+            <p>Premier boss de MMORPG capable d'<strong>analyser le comportement des joueurs en temps réel</strong> via des SLM (Small Language Models) et NVIDIA ACE. Il enregistre les batailles passées, identifie les tactiques répétitives et développe des contre-stratégies&nbsp;: priorisation des soigneurs, adaptation des résistances à mi-combat, ignorance des cibles dont il a appris l'inefficacité.</p>
+            <ul class="card-tags"><li>SLM temps réel</li><li>NVIDIA ACE</li><li>Apprentissage adaptatif</li></ul>
           </div>
 
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-newspaper"></i>
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Dead Meat — Interrogatoire Libre</div>
+                <div class="cas-meta">Meaning Machine · First Person Talker</div>
+              </div>
             </div>
-            <h3>Actualités et Articles</h3>
-            <ul style="margin-top: 15px; text-align: left; line-height: 2;">
-              <li>GDC (Game Developers Conference) - Conférences sur l'IA</li>
-              <li>GameAI Pro - Ressources sur l'IA dans les jeux</li>
-              <li>TechCrunch Gaming - Articles sur les innovations</li>
-              <li>Polygon - Analyses et interviews</li>
-            </ul>
+            <p>Jeu de mystère où le joueur interroge des suspects <strong>avec ses propres mots</strong> (clavier ou voix). Le système <em>Authored AI</em> permet aux auteurs de garder le contrôle créatif tout en laissant émerger des interactions inédites. Deux couches coexistent&nbsp;: le dialogue externe (défensif) et le monologue interne révélé par un appareil de lecture mentale.</p>
+            <ul class="card-tags"><li>Authored AI</li><li>Voice Input</li><li>Dialogue génératif</li></ul>
           </div>
 
-          <div class="formation-card">
-            <div class="formation-icon">
-              <i class="fa-solid fa-graduation-cap"></i>
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-people-group"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Life of an NPC</div>
+                <div class="cas-meta">Max Loh · Simulation autonome</div>
+              </div>
             </div>
-            <h3>Apprentissage</h3>
-            <ul style="margin-top: 15px; text-align: left; line-height: 2;">
-              <li>Cours sur le Machine Learning appliqué au gaming</li>
-              <li>Tutoriels Unity ML-Agents</li>
-              <li>Documentation des frameworks d'IA</li>
-              <li>Communautés de développeurs (Reddit, Discord)</li>
-            </ul>
+            <p>Simulation où chaque citoyen-PNJ possède ses propres <strong>buts, désirs et comportements autonomes</strong>. Ils prennent des décisions en fonction de leur état interne et de leur environnement, créant une société virtuelle vivante sans intervention directe du joueur.</p>
+            <ul class="card-tags"><li>Multi-agent</li><li>PNJ autonomes</li><li>Simulation sociale</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-crosshairs"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">PUBG — Coéquipiers à Mémoire Longue</div>
+                <div class="cas-meta">Krafton × NVIDIA ACE · 2026</div>
+              </div>
+            </div>
+            <p>PUBG: Battlegrounds intègre NVIDIA ACE pour proposer des <strong>coéquipiers IA dotés de mémoire long-terme</strong>. Ils mémorisent votre style de jeu, adaptent leurs suggestions tactiques à votre profil et apprennent vos préférences au fil des parties.</p>
+            <ul class="card-tags"><li>NVIDIA ACE</li><li>Mémoire persistante</li><li>Battle Royale</li></ul>
+          </div>
+        </div>
+
+        <!-- Tableau titres emblématiques -->
+        <h3 style="margin:44px 0 16px;font-size:1.15rem;">Titres emblématiques 2025–2026</h3>
+        <div class="data-table-wrapper">
+          <table class="data-table" aria-label="Jeux emblématiques utilisant l'IA générative">
+            <thead>
+              <tr><th>Titre</th><th>Développeur</th><th>Genre</th><th>Usage de l'IA</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Dead Meat</strong></td><td>Meaning Machine</td><td>Mystère / Enquête</td><td>Interrogatoire libre texte/voix (Authored AI)</td></tr>
+              <tr><td><strong>MIR5</strong></td><td>Wemade Next</td><td>MMORPG</td><td>Boss Asterion apprenant (SLM + NVIDIA ACE)</td></tr>
+              <tr><td><strong>Life of an NPC</strong></td><td>Max Loh</td><td>Simulation</td><td>Citoyens autonomes avec buts et désirs propres</td></tr>
+              <tr><td><strong>PUBG: Battlegrounds</strong></td><td>Krafton</td><td>Battle Royale</td><td>Coéquipiers IA à mémoire long-terme</td></tr>
+              <tr><td><strong>Total War: PHARAOH</strong></td><td>Creative Assembly</td><td>Stratégie</td><td>Assistant IA pour les systèmes complexes</td></tr>
+              <tr><td><strong>Zombonks</strong></td><td>Sinn Studio</td><td>Action / VR</td><td>Développé ×2 plus vite grâce à Aura (Unreal)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ÉTHIQUE & EMPLOI ══════════════════════════════════════════════════ -->
+    <section id="ethique" class="section" aria-labelledby="ethique-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="ethique-title" class="section-title">Éthique &amp; Emploi</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">GDC 2026 — Le rapport «&nbsp;State of the Game Industry&nbsp;» sonne l'alarme</p>
+        </div>
+
+        <div class="cas-grid">
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Sentiment en forte dégradation</div>
+                <div class="cas-meta">GDC 2026 · State of the Industry</div>
+              </div>
+            </div>
+            <p>La part de professionnels estimant l'IA générative <strong>néfaste pour l'industrie</strong> a explosé&nbsp;: <span class="mono">18%</span> en 2024 → <span class="mono">30%</span> en 2025 → <strong class="accent">52% en 2026</strong>. Les métiers les plus critiques&nbsp;: artistes visuels (<strong>64%</strong>) et concepteurs narratifs (<strong>63%</strong>).</p>
+            <ul class="card-tags"><li>52% négatif</li><li>Artistes 64%</li><li>Narrateurs 63%</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-user-slash"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Crise de l'emploi dans les studios</div>
+                <div class="cas-meta">Licenciements massifs · Studios AAA</div>
+              </div>
+            </div>
+            <p><strong>28%</strong> des répondants ont été licenciés ces deux dernières années. Les studios AAA sont les plus touchés&nbsp;: <strong>⅔ des employés</strong> signalent des licenciements dans leurs entreprises. Les postes d'entrée de gamme sont les premiers menacés par l'automatisation.</p>
+            <ul class="card-tags"><li>28% licenciés</li><li>AAA surtout</li><li>Postes juniors</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Pessimisme de la nouvelle génération</div>
+                <div class="cas-meta">Étudiants · Perspectives de carrière</div>
+              </div>
+            </div>
+            <p><strong>74%</strong> des étudiants s'inquiètent de leurs perspectives de carrière, confrontés à la double pression&nbsp;: concurrence des seniors licenciés ET remplacement des tâches d'entrée de gamme par l'IA. Une génération contrainte de se repositionner avant même de débuter.</p>
+            <ul class="card-tags"><li>74% inquiets</li><li>Repositionnement</li><li>Compétences IA</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-wrench"></i></div>
+              <div class="cas-header-text" style="flex:1">
+                <div class="cas-title">Adoption massive malgré tout</div>
+                <div class="cas-meta">Usage professionnel quotidien</div>
+              </div>
+            </div>
+            <p>Paradoxalement, <strong>36%</strong> des développeurs utilisent l'IA générative au quotidien (recherche, brainstorming, code). Les entreprises marketing affichent <strong>58%</strong> d'adoption, contre <strong>30%</strong> dans les studios de dev — un clivage net selon les métiers.</p>
+            <ul class="card-tags"><li>36% studios</li><li>58% marketing</li><li>Brainstorming</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ IMPACT ENVIRONNEMENTAL ════════════════════════════════════════════ -->
+    <section id="environnement" class="section section-alt" aria-labelledby="env-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="env-title" class="section-title">Impact Environnemental</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Le coût invisible de chaque requête IA — des chiffres qui interpellent</p>
+        </div>
+
+        <div class="about-text" style="margin-bottom:32px">
+          <p>
+            En 2025, l'explosion de l'IA a libéré autant de CO₂ dans l'atmosphère que la ville de 
+            <strong>New York en une année entière</strong>. L'Agence Internationale de l'Énergie (AIE) 
+            prévoit que la consommation des centres de données <strong>pourrait plus que doubler d'ici 2030</strong>, 
+            obligeant certaines régions à repousser la fermeture de centrales à charbon pour répondre 
+            aux besoins énergétiques. Un seul centre de données de grande taille peut consommer des 
+            millions de gallons d'eau douce par an — l'équivalent de la consommation annuelle d'une 
+            ville de <strong>30 000 habitants</strong>.
+          </p>
+        </div>
+
+        <div class="env-grid">
+          <div class="env-card">
+            <div class="env-icon">🏋️</div>
+            <div class="env-value">~1 287 MWh</div>
+            <div class="env-label">Électricité pour entraîner un grand modèle IA</div>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">💧</div>
+            <div class="env-value">2,77 M L</div>
+            <div class="env-label">Eau douce consommée pour entraîner un LLM (~493-550 t CO₂)</div>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">💬</div>
+            <div class="env-value">~0,5 L</div>
+            <div class="env-label">Eau par conversation ChatGPT de 20-50 questions</div>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">⚡</div>
+            <div class="env-value">~0,34 Wh</div>
+            <div class="env-label">Électricité pour une requête simple ChatGPT</div>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">🎬</div>
+            <div class="env-value">~1 kWh</div>
+            <div class="env-label">Électricité pour générer une vidéo Sora 2 (~466 g CO₂)</div>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">🏙️</div>
+            <div class="env-value">= New York</div>
+            <div class="env-label">Émissions CO₂ de l'IA en 2025 = celles de New York sur 1 an</div>
+          </div>
+        </div>
+
+        <div class="alert-box alert-orange" style="margin-top:32px">
+          <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+          <p>
+            <strong>Initiative durable — Matériel responsable :</strong> en réponse à cet impact, des 
+            innovations de «&#8239;matériel durable&#8239;» émergent, comme la technologie de capteurs 
+            <strong>TMR</strong> pour éliminer définitivement le <em>stick drift</em> des manettes, 
+            réduisant ainsi les déchets électroniques. La durabilité matérielle devient un 
+            <strong>standard d'image de marque</strong> et de conformité réglementaire pour les 
+            constructeurs gaming.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TENDANCES ════════════════════════════════════════════════════════ -->
+    <section id="tendances" class="section" aria-labelledby="tendances-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="tendances-title" class="section-title">Tendances &amp; Perspectives</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Les enseignements clés de 2026 et ce qui s'annonce</p>
+        </div>
+
+        <div class="about-text" style="margin-bottom:28px">
+          <p>
+            L'horizon 2026 pour le jeu vidéo est celui d'une <strong>hybridation complexe</strong>. 
+            D'un côté, l'IA agentique offre des outils de création d'une puissance inouïe, permettant 
+            à de petites équipes de produire des contenus de qualité AAA. De l'autre, elle impose une 
+            réflexion nécessaire sur la valeur du travail humain et la durabilité de nos infrastructures 
+            numériques.
+          </p>
+        </div>
+
+        <ul class="tendances-list" aria-label="Tendances clés 2026">
+          <li>
+            <i class="fa-solid fa-memory" aria-hidden="true"></i>
+            <span><strong>L'autonomie et l'intimité remplacent la course aux graphismes.</strong> Les joueurs veulent des PNJ qui les <em>connaissent</em>, pas seulement des environnements plus beaux. La mémoire est le nouveau moteur d'innovation et de rétention.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+            <span><strong>L'orchestration prime sur la maîtrise de prompts isolés.</strong> Le développeur de 2026 dirige des agents. Le <em>Context Engineering</em> — gestion du contexte pour rendre l'IA réellement utile — devient une compétence fondamentale.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-filter" aria-hidden="true"></i>
+            <span><strong>La lutte contre le «&#8239;slop&#8239;» IA devient prioritaire.</strong> Avec la prolifération des contenus générés mécaniquement, la qualité et l'intentionnalité humaine derrière l'IA différencient les bons jeux des productions génériques.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+            <span><strong>La durabilité matérielle devient un standard réglementaire.</strong> Les studios et constructeurs intègrent l'empreinte environnementale dans leurs feuilles de route, sous la pression des régulateurs et des communautés de joueurs.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+            <span><strong>L'équilibre créativité humaine / efficacité machine est l'enjeu décisif.</strong> Les studios qui réussissent sont ceux qui utilisent l'IA pour <em>amplifier</em> leurs artistes — pas pour les remplacer. L'humain reste au cœur de la vision créative.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+            <span><strong>L'IA on-device démocratise l'accès pour les indépendants.</strong> Unity Sentis et ses équivalents permettent d'exécuter des modèles IA sans coûts cloud, ouvrant les technologies AAA aux équipes de 2-3 personnes.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ Q&A JURY ══════════════════════════════════════════════════════════ -->
+    <section id="jury" class="section section-alt" aria-labelledby="jury-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="jury-title" class="section-title">Questions Fréquentes du Jury</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Anticipez les questions — cliquez pour voir les éléments de réponse</p>
+        </div>
+
+        <div class="jury-grid">
+
+          <div class="jury-item">
+            <div class="jury-question" role="button" tabindex="0" aria-expanded="false">
+              <span class="q-badge">Q1</span>
+              Pourquoi avez-vous choisi ce sujet de veille ?
+              <i class="fa-solid fa-chevron-down q-chevron"></i>
+            </div>
+            <div class="jury-answer">
+              <div class="jury-answer-inner">
+                <p>J'ai choisi ce sujet car il croise deux intérêts forts : <strong>ma passion pour le jeu vidéo</strong> depuis l'enfance et <strong>ma formation en développement</strong> au BTS SIO. L'IA dans le gaming est un secteur en transformation rapide — les outils comme Aura ou DLSS 4.5 montrent que les compétences en développement sont directement impactées. C'est donc un sujet à la fois personnel et professionnellement pertinent.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="jury-item">
+            <div class="jury-question" role="button" tabindex="0" aria-expanded="false">
+              <span class="q-badge">Q2</span>
+              Comment avez-vous trouvé vos sources ? Comment avez-vous vérifié leur fiabilité ?
+              <i class="fa-solid fa-chevron-down q-chevron"></i>
+            </div>
+            <div class="jury-answer">
+              <div class="jury-answer-inner">
+                <p>Mes sources principales sont des <strong>rapports officiels de conférences</strong> (GDC 2026, CES 2026) et des communications directes d'entreprises (NVIDIA, Microsoft, Unity). Pour vérifier la fiabilité, j'ai systématiquement <strong>recoupé chaque chiffre sur deux sources indépendantes</strong>. Par exemple, le chiffre des 52% de développeurs critiques envers l'IA générative est issu du rapport officiel GDC 2026 "State of the Game Industry", croisé avec plusieurs analyses de presse spécialisée.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="jury-item">
+            <div class="jury-question" role="button" tabindex="0" aria-expanded="false">
+              <span class="q-badge">Q3</span>
+              Quel est l'impact de cette veille sur votre métier futur de technicien ?
+              <i class="fa-solid fa-chevron-down q-chevron"></i>
+            </div>
+            <div class="jury-answer">
+              <div class="jury-answer-inner">
+                <p>Cette veille m'a montré que le développeur de 2026 doit maîtriser le <strong>Context Engineering</strong> — c'est-à-dire orchestrer des agents IA plutôt que de simplement écrire du code ligne à ligne. Des outils comme Aura pour Unreal Engine ou Unity Sentis font partie des environnements que je pourrais utiliser en stage ou en entreprise. Suivre ces évolutions me prépare à rester compétitif sur le marché du travail, surtout face aux <strong>28% de licenciements</strong> observés dans les studios ces deux dernières années.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="jury-item">
+            <div class="jury-question" role="button" tabindex="0" aria-expanded="false">
+              <span class="q-badge">Q4</span>
+              Quelles limites ou risques avez-vous identifiés dans votre sujet ?
+              <i class="fa-solid fa-chevron-down q-chevron"></i>
+            </div>
+            <div class="jury-answer">
+              <div class="jury-answer-inner">
+                <p>J'ai identifié <strong>trois risques majeurs</strong>. D'abord l'impact social : 52% des développeurs voient l'IA générative comme néfaste, et les postes d'entrée de gamme sont les premiers menacés. Ensuite l'impact environnemental : entraîner un grand modèle IA consomme environ 1 287 MWh d'électricité et l'empreinte CO₂ de l'IA en 2025 était équivalente à New York sur un an. Enfin, le risque de <strong>"slop" IA</strong> — une prolifération de contenus générés mécaniquement qui fait baisser la qualité globale des jeux.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="jury-item">
+            <div class="jury-question" role="button" tabindex="0" aria-expanded="false">
+              <span class="q-badge">Q5</span>
+              Qu'est-ce que l'IA agentique ? Expliquez simplement.
+              <i class="fa-solid fa-chevron-down q-chevron"></i>
+            </div>
+            <div class="jury-answer">
+              <div class="jury-answer-inner">
+                <p>Avant 2026, une IA "réactive" répondait à une question ou suggérait du code. <strong>L'IA agentique agit</strong> : elle planifie des tâches, coordonne d'autres agents, gère des fichiers et livre un résultat complet sans qu'on lui dise chaque étape. L'exemple concret : Aura sur Unreal Engine ne suggère pas une ligne de code — il prend en charge un niveau entier de jeu (éclairage, post-traitement, scripts) en autonomie, passant de 2-3 jours à 4-5 heures par niveau chez Sinn Studio.</p>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- Call to Action -->
-    <div class="cta-section">
-      <div class="cta-card">
-        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-        <h3>Retour au Portfolio</h3>
-        <p>Découvrez mes autres projets et compétences</p>
-        <a href="index.html" class="btn-primary" aria-label="Retourner à la page d'accueil">
-          <i class="fa-solid fa-home" aria-hidden="true"></i>
-          Retour à l'accueil
-        </a>
+    <!-- ══ SOURCES ════════════════════════════════════════════════════════════ -->
+    <section id="sources" class="section section-alt" aria-labelledby="sources-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sources-title" class="section-title">Sources &amp; Ressources</h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Données vérifiées — Mars 2026</p>
+        </div>
+
+        <div class="sources-grid">
+          <div class="source-card">
+            <h4><i class="fa-solid fa-microphone-lines"></i> Conférences &amp; Rapports</h4>
+            <ul>
+              <li><a href="https://gdconf.com/article/gdc-2026-state-of-the-game-industry-reveals-impact-of-layoffs-generative-ai-and-more/" target="_blank" rel="noopener noreferrer">GDC 2026 — State of the Game Industry</a></li>
+              <li><a href="https://news.microsoft.com/source/features/ai/whats-next-in-ai-7-trends-to-watch-in-2026/" target="_blank" rel="noopener noreferrer">Microsoft — 7 tendances IA 2026</a></li>
+              <li><a href="https://www.gamesmarket.global/ai-gaming-in-2026/" target="_blank" rel="noopener noreferrer">GamesMarkt — AI &amp; Gaming 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="source-card">
+            <h4><i class="fa-solid fa-tools"></i> Moteurs &amp; Outils</h4>
+            <ul>
+              <li><a href="https://techintelpro.com/news/ai/ai-assistants/aura-ai-assistant-for-unreal-engine-launches-january-2026" target="_blank" rel="noopener noreferrer">Aura AI — Unreal Engine (Ramen VR)</a></li>
+              <li><a href="https://www.prnewswire.com/news-releases/tencent-games-showcases-tech-advancements-shaping-future-player-experience-at-gdc-2026-302707052.html" target="_blank" rel="noopener noreferrer">Tencent VISVISE — GDC 2026</a></li>
+              <li><a href="https://markets.financialcontent.com/wral/article/finterra-2026-2-12-unity-software-nyse-u-the-great-rebuild-and-the-ai-horizon" target="_blank" rel="noopener noreferrer">Unity Software — AI Horizon 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="source-card">
+            <h4><i class="fa-solid fa-video"></i> Hardware &amp; Rendu</h4>
+            <ul>
+              <li><a href="https://www.nvidia.com/en-us/geforce/news/ces-2026-nvidia-geforce-rtx-announcements/" target="_blank" rel="noopener noreferrer">NVIDIA GeForce @ CES 2026</a></li>
+              <li><a href="https://gamingtrend.com/news/nvidia-made-a-few-big-announcementsx-at-ces/" target="_blank" rel="noopener noreferrer">GamingTrend — CES 2026 NVIDIA</a></li>
+              <li><a href="https://www.storagereview.com/news/nvidia-outlines-geforce-updates-across-gaming-and-ai-at-ces-2026" target="_blank" rel="noopener noreferrer">StorageReview — GeForce CES 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="source-card">
+            <h4><i class="fa-solid fa-gamepad"></i> Cas d'Usage Jeux</h4>
+            <ul>
+              <li><a href="https://www.oreateai.com/blog/asterion-the-ai-boss-that-learns-and-evolves-in-mir5/" target="_blank" rel="noopener noreferrer">Asterion (MIR5) — Boss IA apprenant</a></li>
+              <li><a href="https://premortem.games/2024/01/19/literally-talk-to-the-murder-suspect-in-dead-meat-ai-enabled-dialogue-is-only-as-good-as-the-humans-behind-it/" target="_blank" rel="noopener noreferrer">Dead Meat — Authored AI Dialogue</a></li>
+              <li><a href="https://store.steampowered.com/app/3489080/Life_of_an_NPC/" target="_blank" rel="noopener noreferrer">Life of an NPC — Steam</a></li>
+            </ul>
+          </div>
+
+          <div class="source-card">
+            <h4><i class="fa-solid fa-leaf"></i> Environnement</h4>
+            <ul>
+              <li><a href="https://thesustainableagency.com/blog/environmental-impact-of-generative-ai/" target="_blank" rel="noopener noreferrer">Impact environnemental IA générative 2026</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Environmental_impact_of_artificial_intelligence" target="_blank" rel="noopener noreferrer">Wikipedia — Environmental impact of AI</a></li>
+              <li><a href="https://www.nsta.org/blog/carbon-cost-our-clicks-environmental-impact-ai-science-educators-perspective" target="_blank" rel="noopener noreferrer">NSTA — Carbon Cost of Our Clicks</a></li>
+            </ul>
+          </div>
+
+          <div class="source-card">
+            <h4><i class="fa-solid fa-newspaper"></i> Actualités &amp; Tendances</h4>
+            <ul>
+              <li><a href="https://us.aimcontrollers.com/blog/top-gaming-trends-of-2026/" target="_blank" rel="noopener noreferrer">Top Gaming Trends 2026</a></li>
+              <li><a href="https://datanorth.ai/blog/top-10-ai-newsletters-to-follow-in-2026" target="_blank" rel="noopener noreferrer">Top 10 Newsletters IA 2026</a></li>
+              <li><a href="https://developer.nvidia.com/ace" target="_blank" rel="noopener noreferrer">NVIDIA ACE — Documentation officielle</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" aria-label="Retour au portfolio">
+      <div class="container">
+        <div class="cta-card">
+          <i class="fa-solid fa-house" aria-hidden="true"></i>
+          <h3>Retour au Portfolio</h3>
+          <p>Découvrez mes projets, compétences et expériences professionnelles.</p>
+          <a href="index.html" class="btn-primary" aria-label="Retourner à la page d'accueil">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            <span>Retour à l'accueil</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -655,30 +1194,23 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; <time>2026</time> Mohamed Kharraz – Portfolio BTS SIO</p>
-        <p class="footer-subtitle">Veille technologique sur l'IA dans les jeux vidéo</p>
-      </div>
-      
-      <!-- Réseaux sociaux -->
-      <div class="footer-socials" aria-label="Liens vers les réseaux sociaux">
-        <a href="https://github.com/Kenichitns/" target="_blank" rel="noopener noreferrer" aria-label="Visiter mon profil GitHub">
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/mohamed-kharraz-230250257/" target="_blank" rel="noopener noreferrer" aria-label="Visiter mon profil LinkedIn">
-          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-        </a>
+        <p>&copy; <time id="footer-year">2026</time> Mohamed Kharraz – Portfolio BTS SIO</p>
+        <p class="footer-subtitle">Veille technologique · IA &amp; Jeux Vidéo · Sources vérifiées mars 2026</p>
+        <address style="margin-top:12px">
+          <a href="https://github.com/Kenichitns/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          &ensp;
+          <a href="https://www.linkedin.com/in/mohamed-kharraz-230250257/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </address>
       </div>
     </div>
-    
-    <!-- Bouton retour en haut -->
     <button id="scroll-top" aria-label="Retour en haut de la page">
       <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
     </button>
   </footer>
-  
-  <!-- ===== SCRIPTS ===== -->
-  <script src="js/script.js" defer></script>
 
 </body>
 </html>
-
