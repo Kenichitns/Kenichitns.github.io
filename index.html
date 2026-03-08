@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- ===== SEO de base ===== -->
   <title>Mohamed Kharraz | Développeur Web & Technicien Réseau – BTS SIO SLAM</title>
   <meta name="description" content="Portfolio de Mohamed Kharraz, étudiant BTS SIO SLAM. Développeur web passionné et technicien réseau, à la recherche d'une alternance en Île-de-France.">
   <meta name="keywords"    content="Mohamed Kharraz, développeur web, BTS SIO SLAM, portfolio, alternance, HTML CSS JavaScript, Python, réseau">
@@ -13,7 +12,6 @@
   <meta name="robots"      content="index, follow">
   <link rel="canonical"    href="https://kenichitns.github.io/">
 
-  <!-- ===== Open Graph (réseaux sociaux) ===== -->
   <meta property="og:type"        content="website">
   <meta property="og:title"       content="Mohamed Kharraz | Portfolio BTS SIO SLAM">
   <meta property="og:description" content="Étudiant développeur passionné par le web et les réseaux. Découvrez mes projets et expériences.">
@@ -23,45 +21,33 @@
   <meta name="twitter:title"       content="Mohamed Kharraz | Portfolio BTS SIO SLAM">
   <meta name="twitter:description" content="Étudiant développeur passionné par le web et les réseaux.">
 
-  <!-- ===== Couleur thème mobile ===== -->
   <meta name="theme-color" content="#c0122e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- ===== Polices Google Fonts ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- ===== Font Awesome ===== -->
   <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
 
-  <!-- ===== Feuille de style ===== -->
   <link rel="preload" href="css/Style.css" as="style">
   <link rel="stylesheet"   href="css/Style.css">
 
-  <!-- ===== Script JS (defer = non bloquant) ===== -->
   <script src="js/script.js" defer></script>
 </head>
 <body>
 
-  <!-- Lien d'évitement (accessibilité) -->
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-  <!-- Barre de progression défilement -->
   <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
 
-  <!-- ===================================================
-       HEADER & NAVIGATION
-       =================================================== -->
   <header id="header" class="hero-section" role="banner">
 
-    <!-- Navigation principale -->
     <nav class="navbar" aria-label="Navigation principale">
       <div class="navbar-container container">
 
-        <!-- Logo -->
         <a href="index.html" class="logo" aria-label="Retour à l'accueil – Mohamed Kharraz">
           <div class="logo-wrapper">
             <div class="logo-icon" aria-hidden="true">
@@ -74,7 +60,6 @@
           </div>
         </a>
 
-        <!-- Bouton thème + Burger -->
         <div style="display:flex; align-items:center; gap:12px;">
           <button id="theme-toggle" aria-label="Basculer le thème" title="Mode clair">
             <i class="fa-solid fa-sun"></i>
@@ -95,7 +80,6 @@
           </button>
         </div>
 
-        <!-- Liens de navigation -->
         <ul class="nav-links" id="nav-links" role="list">
           <li><a href="#about"      class="nav-link">À propos</a></li>
           <li><a href="#competences" class="nav-link">Compétences</a></li>
@@ -121,12 +105,10 @@
       </div>
     </nav>
 
-    <!-- Hero Content -->
     <div class="hero-content">
       <div class="hero-container container">
         <div class="hero-text-wrapper">
 
-          <!-- Badge disponibilité -->
           <p class="hero-badge">
             <span class="badge-dot"></span>
             Disponible pour alternance
@@ -145,7 +127,6 @@
             Développeur &amp; Technicien réseau · BTS SIO SLAM · Île-de-France
           </p>
 
-          <!-- Texte animé (typewriter) -->
           <div class="hero-typed-wrapper">
             <span
               id="typed-text"
@@ -156,7 +137,6 @@
             <span class="typed-cursor" aria-hidden="true">|</span>
           </div>
 
-          <!-- Boutons CTA -->
           <div class="hero-buttons">
             <a href="#projets" class="btn-primary hero-btn">
               <span>Voir mes projets</span>
@@ -171,7 +151,6 @@
         </div>
       </div>
 
-      <!-- Indicateur de défilement -->
       <div class="scroll-indicator" aria-hidden="true">
         <a href="#about" class="scroll-down" tabindex="-1">
           <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
@@ -182,12 +161,8 @@
 
   </header>
 
-  <!-- ===================================================
-       CONTENU PRINCIPAL
-       =================================================== -->
   <main id="main-content" role="main">
 
-    <!-- ==================== À PROPOS ==================== -->
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container">
 
@@ -198,7 +173,6 @@
 
         <div class="about-content">
 
-          <!-- Photo -->
           <div class="about-image">
             <div class="image-wrapper">
               <img
@@ -213,7 +187,6 @@
             </div>
           </div>
 
-          <!-- Texte -->
           <div class="about-text">
             <h3>Étudiant en BTS SIO SLAM</h3>
 
@@ -231,7 +204,6 @@
               Je cherche une <strong>alternance</strong> pour mettre mes compétences au service d'une équipe dynamique.
             </p>
 
-            <!-- Stats rapides -->
             <div class="about-stats" aria-label="Chiffres clés">
               <div class="stat-item">
                 <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
@@ -256,7 +228,6 @@
               </div>
             </div>
 
-            <!-- Passions -->
             <div class="interests">
               <h4><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Mes passions</h4>
               <p>
@@ -282,7 +253,6 @@
       </div>
     </section>
 
-    <!-- ==================== COMPÉTENCES ==================== -->
     <section id="competences" class="section section-alt" aria-labelledby="competences-title">
       <div class="container">
 
@@ -294,7 +264,6 @@
 
         <div class="competences-grid">
 
-          <!-- Développement -->
           <div class="competence-category">
             <div class="category-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
             <h3>Développement</h3>
@@ -338,7 +307,6 @@
             </div>
           </div>
 
-          <!-- Réseaux & Systèmes -->
           <div class="competence-category">
             <div class="category-icon" aria-hidden="true"><i class="fa-solid fa-network-wired"></i></div>
             <h3>Réseaux &amp; Systèmes</h3>
@@ -382,7 +350,6 @@
             </div>
           </div>
 
-          <!-- Sécurité -->
           <div class="competence-category">
             <div class="category-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
             <h3>Sécurité</h3>
@@ -426,7 +393,6 @@
             </div>
           </div>
 
-          <!-- Outils -->
           <div class="competence-category">
             <div class="category-icon" aria-hidden="true"><i class="fa-solid fa-toolbox"></i></div>
             <h3>Outils &amp; Divers</h3>
@@ -474,7 +440,6 @@
       </div>
     </section>
 
-    <!-- ==================== PROJETS ==================== -->
     <section id="projets" class="section" aria-labelledby="projets-title">
       <div class="container">
 
@@ -484,7 +449,6 @@
           <p class="section-subtitle">Sélection de projets personnels et scolaires</p>
         </div>
 
-        <!-- Barre de filtres -->
         <div class="filter-bar" role="group" aria-label="Filtrer les projets">
           <button class="filter-btn active" data-filter="all"     aria-pressed="true">Tous</button>
           <button class="filter-btn"        data-filter="web"     aria-pressed="false">Web</button>
@@ -494,7 +458,6 @@
 
         <div class="projects-grid">
 
-          <!-- Projet 1 : PharmaSI -->
           <article class="project-card" data-category="app">
             <div class="project-header">
               <h3>Application PharmaSI</h3>
@@ -522,7 +485,6 @@
             </div>
           </article>
 
-          <!-- Projet 2 : Site KH Afrique Mode -->
           <article class="project-card" data-category="web">
             <div class="project-header">
               <h3>Site vitrine – KH. Afrique Mode</h3>
@@ -555,7 +517,6 @@
             </div>
           </article>
 
-          <!-- Projet 3 : Ce Portfolio -->
           <article class="project-card" data-category="web">
             <div class="project-header">
               <h3>Ce Portfolio</h3>
@@ -588,7 +549,6 @@
       </div>
     </section>
 
-    <!-- ==================== EXPÉRIENCES ==================== -->
     <section id="experience" class="section section-alt" aria-labelledby="experience-title">
       <div class="container">
 
@@ -600,7 +560,6 @@
 
         <ol class="timeline" role="list" aria-label="Chronologie des expériences">
 
-          <!-- Expérience 1 : KH Afrique Mode -->
           <li class="timeline-item" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <article class="timeline-content">
@@ -626,7 +585,6 @@
             </article>
           </li>
 
-          <!-- Expérience 2 : Save (2024-2025) -->
           <li class="timeline-item" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <article class="timeline-content">
@@ -652,7 +610,6 @@
             </article>
           </li>
 
-          <!-- Expérience 3 : Deezer -->
           <li class="timeline-item" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <article class="timeline-content">
@@ -678,7 +635,6 @@
             </article>
           </li>
 
-          <!-- Expérience 4 : Save (2022-2023) -->
           <li class="timeline-item" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <article class="timeline-content">
@@ -708,7 +664,6 @@
       </div>
     </section>
 
-    <!-- ==================== FORMATION ==================== -->
     <section id="parcours" class="section" aria-labelledby="parcours-title">
       <div class="container">
 
@@ -762,7 +717,6 @@
       </div>
     </section>
 
-    <!-- ==================== CONTACT ==================== -->
     <section id="contact" class="section section-alt" aria-labelledby="contact-title">
       <div class="container">
 
@@ -774,7 +728,6 @@
 
         <div class="contact-wrapper">
 
-          <!-- Infos de contact -->
           <div class="contact-info">
 
             <div class="contact-item">
@@ -801,7 +754,6 @@
               </div>
             </div>
 
-            <!-- Réseaux sociaux -->
             <div class="social-links">
               <h4>Retrouvez-moi sur</h4>
               <div class="social-icons-grid">
@@ -828,11 +780,11 @@
 
           </div>
 
-          <!-- Formulaire -->
           <div class="contact-form-wrapper">
             <form
               id="contact-form"
-              name="submit-to-google-sheet"
+              action="https://formspree.io/f/maqpqwlj"
+              method="POST"
               aria-label="Formulaire de contact"
               novalidate
             >
@@ -846,7 +798,7 @@
                   <input
                     type="text"
                     id="name"
-                    name="Name"
+                    name="name"
                     placeholder="Votre nom complet"
                     required
                     aria-required="true"
@@ -861,7 +813,7 @@
                   <input
                     type="email"
                     id="email"
-                    name="Email"
+                    name="email"
                     placeholder="votre.email@exemple.com"
                     required
                     aria-required="true"
@@ -876,7 +828,7 @@
                   </label>
                   <textarea
                     id="message"
-                    name="Message"
+                    name="message"
                     rows="6"
                     placeholder="Votre message…"
                     required
@@ -890,7 +842,6 @@
                 <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
               </button>
 
-              <!-- Notification envoi -->
               <div id="msg" role="status" aria-live="polite" aria-atomic="true"></div>
             </form>
           </div>
@@ -901,9 +852,6 @@
 
   </main>
 
-  <!-- ===================================================
-       FOOTER
-       =================================================== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-content">
@@ -917,7 +865,6 @@
       </div>
     </div>
 
-    <!-- Bouton retour en haut -->
     <button id="scroll-top" aria-label="Retour en haut de la page">
       <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
     </button>
