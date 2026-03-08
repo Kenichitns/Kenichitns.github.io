@@ -1,165 +1,181 @@
-// ===========================
-// PORTFOLIO - JS OPTIMISÉ
-// ===========================
+// ================================================
+// PORTFOLIO MOHAMED KHARRAZ — JS AMÉLIORÉ v2.0
+// ================================================
+// Modules :
+//   1. Config
+//   2. Utils
+//   3. Navigation (burger, scroll, smooth, activeNav)
+//   4. Barre de progression défilement
+//   5. Thème sombre / clair (dark mode)
+//   6. Typewriter
+//   7. Animations d'intersection (skills, fade-in)
+//   8. Filtre projets
+//   9. Accordéon
+//   10. Formulaire de contact
+//   11. Initialisation
+// ================================================
 
-(function() {
+(function () {
   'use strict';
 
-  // ===== CONFIG =====
+  // ================================================
+  // 1. CONFIG
+  // ================================================
   const CONFIG = {
     typewriter: {
       texts: [
-        "Développeur Web",
-        "Technicien Réseau",
-        "Passionné de cybersécurité",
-        "Étudiant BTS SIO SLAM"
+        'Développeur Web',
+        'Technicien Réseau',
+        'Passionné de cybersécurité',
+        'Étudiant BTS SIO SLAM'
       ],
-      typeSpeed: 100,
-      deleteSpeed: 50,
-      pauseTime: 2000,
-      startDelay: 1500
+      typeSpeed:   90,
+      deleteSpeed: 45,
+      pauseTime:   1800,
+      startDelay:  1200
     },
     animation: {
-      scrollThreshold: 100,
-      skillThreshold: 0.2,
-      sectionThreshold: 0.1
+      scrollThreshold: 80,
+      skillThreshold:  0.2,
+      sectionThreshold: 0.08
     },
     form: {
       scriptURL: 'https://script.google.com/macros/s/AKfycbwV4dumTE8jLQUVvokT1ks49h6YoHAKP4n4u5pw5doA-kkQ7DEkqVWQjScBERPA5V9vLg/exec'
     }
   };
 
-  // ===== UTILS =====
+  // ================================================
+  // 2. UTILS
+  // ================================================
   const Utils = {
+    /** Limite la fréquence d'appel d'une fonction */
     throttle(fn, wait) {
-      let lastTime = 0;
-      return function(...args) {
+      let last = 0;
+      return function (...args) {
         const now = Date.now();
-        if (now - lastTime >= wait) {
-          lastTime = now;
-          fn.apply(this, args);
-        }
+        if (now - last >= wait) { last = now; fn.apply(this, args); }
       };
     },
 
+    /** Délai d'exécution après inactivité */
     debounce(fn, wait) {
-      let timeoutId;
-      return function(...args) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn.apply(this, args), wait);
+      let id;
+      return function (...args) {
+        clearTimeout(id);
+        id = setTimeout(() => fn.apply(this, args), wait);
       };
     },
 
+    /** Préférence de réduction de mouvement */
     prefersReducedMotion() {
-      return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      return typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     },
 
-    $(selector) {
-      return document.querySelector(selector);
-    },
+    /** Alias querySelector */
+    $(sel)  { return document.querySelector(sel); },
+    $$(sel) { return document.querySelectorAll(sel); },
 
-    $$(selector) {
-      return document.querySelectorAll(selector);
-    },
-
-    on(element, event, handler) {
-      if (element) element.addEventListener(event, handler);
-    },
-
-    removeClass(element, className) {
-      if (element) element.classList.remove(className);
-    },
-
-    addClass(element, className) {
-      if (element) element.classList.add(className);
-    },
-
-    toggleClass(element, className) {
-      if (element) element.classList.toggle(className);
-    }
+    /** Helpers classes */
+    add   (el, cls) { if (el) el.classList.add(cls); },
+    remove(el, cls) { if (el) el.classList.remove(cls); },
+    toggle(el, cls) { if (el) el.classList.toggle(cls); },
+    has   (el, cls) { return el ? el.classList.contains(cls) : false; }
   };
 
-  // ===== NAVIGATION =====
+  // ================================================
+  // 3. NAVIGATION
+  // ================================================
   const Nav = {
     init() {
-      this.navbar = Utils.$('.navbar');
-      this.toggle = Utils.$('#nav-toggle');
-      this.links = Utils.$('#nav-links');
+      this.navbar    = Utils.$('.navbar');
+      this.toggle    = Utils.$('#nav-toggle');
+      this.links     = Utils.$('#nav-links');
       this.scrollTop = Utils.$('#scroll-top');
 
-      this.toggle && this.setupBurger();
-      this.setupScroll();
-      this.setupSmoothScroll();
-      this.setupActiveNav();
+      if (this.toggle) this._setupBurger();
+      this._setupScroll();
+      this._setupSmoothScroll();
+      this._setupActiveNav();
     },
 
-    setupBurger() {
-      this.toggle.addEventListener('click', () => {
-        const isActive = this.navbar.classList.toggle('active');
-        this.toggle.setAttribute('aria-expanded', isActive);
-        document.body.style.overflow = isActive ? 'hidden' : '';
+    _setupBurger() {
+      const close = () => {
+        Utils.remove(this.navbar, 'active');
+        this.toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      };
+      const open = () => {
+        Utils.add(this.navbar, 'active');
+        this.toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      };
+
+      this.toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        Utils.has(this.navbar, 'active') ? close() : open();
       });
 
-      if (this.links) {
-        this.links.addEventListener('click', (e) => {
-          if (e.target.closest('a')) {
-            Utils.removeClass(this.navbar, 'active');
-            this.toggle.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-          }
-        });
-      }
+      /* Fermer sur clic d'un lien */
+      this.links?.addEventListener('click', (e) => {
+        if (e.target.closest('a')) close();
+      });
 
+      /* Fermer sur clic extérieur */
+      document.addEventListener('click', (e) => {
+        if (
+          Utils.has(this.navbar, 'active') &&
+          !this.toggle.contains(e.target) &&
+          !this.links?.contains(e.target)
+        ) close();
+      });
+
+      /* Fermer sur Échap */
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.navbar.classList.contains('active')) {
-          Utils.removeClass(this.navbar, 'active');
-          this.toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+        if (e.key === 'Escape' && Utils.has(this.navbar, 'active')) {
+          close();
+          this.toggle.focus();
         }
       });
     },
 
-    setupScroll()
+    _setupScroll() {
+      const onScroll = Utils.throttle(() => {
+        const y = window.scrollY;
 
-        if (this.scrollTop) {
-          scrollY > 500 
-            ? Utils.addClass(this.scrollTop, 'show') 
-            : Utils.removeClass(this.scrollTop, 'show');
-        }
-      }, 100);
+        /* Fond navbar au scroll */
+        y > CONFIG.animation.scrollThreshold
+          ? Utils.add(this.navbar, 'scrolled')
+          : Utils.remove(this.navbar, 'scrolled');
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
+        /* Bouton retour en haut */
+        y > 500
+          ? Utils.add(this.scrollTop, 'show')
+          : Utils.remove(this.scrollTop, 'show');
+      }, 80);
 
-      if (this.scrollTop) {
-        this.scrollTop.addEventListener('click', () => {
-          window.scrollTo({
-            top: 0,
-            behavior: Utils.prefersReducedMotion() ? 'auto' : 'smooth'
-          });
-        });
-      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      this.scrollTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: Utils.prefersReducedMotion() ? 'auto' : 'smooth' });
+      });
     },
 
-    setupSmoothScroll() {
+    _setupSmoothScroll() {
       Utils.$$('a[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
           const hash = link.getAttribute('href');
           if (!hash || hash === '#') return;
-
           const target = Utils.$(hash);
           if (!target) return;
 
           e.preventDefault();
+          const offset = this.navbar?.offsetHeight || 0;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-          const navbar = Utils.$('.navbar');
-          const offset = navbar?.offsetHeight || 0;
-          const targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: Math.max(0, top), behavior: Utils.prefersReducedMotion() ? 'auto' : 'smooth' });
 
-          window.scrollTo({
-            top: Math.max(0, targetPos),
-            behavior: Utils.prefersReducedMotion() ? 'auto' : 'smooth'
-          });
-
+          /* Focus accessible */
           target.setAttribute('tabindex', '-1');
           target.focus({ preventScroll: true });
           setTimeout(() => target.removeAttribute('tabindex'), 800);
@@ -167,281 +183,388 @@
       });
     },
 
-    setupActiveNav() {
-      const sections = Utils.$$('section[id]');
-      const navLinks = Utils.$$('.nav-links a[href^="#"]');
-
+    _setupActiveNav() {
+      const sections  = Utils.$$('section[id]');
+      const navLinks  = Utils.$$('.nav-links a[href^="#"]');
       if (!sections.length || !navLinks.length) return;
 
-      if (typeof IntersectionObserver !== 'undefined') {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(l => l.removeAttribute('aria-current'));
-                const activeLink = Utils.$(`a[href="#${id}"]`);
-                if (activeLink) activeLink.setAttribute('aria-current', 'page');
-              }
-            });
-          },
-          { rootMargin: '0px 0px -60% 0px', threshold: 0.2 }
-        );
+      if (typeof IntersectionObserver === 'undefined') {
+        navLinks[0]?.setAttribute('aria-current', 'page');
+        return;
+      }
 
-        sections.forEach(section => observer.observe(section));
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(l => l.removeAttribute('aria-current'));
+            Utils.$(`a[href="#${id}"]`)?.setAttribute('aria-current', 'page');
+          });
+        },
+        { rootMargin: '0px 0px -60% 0px', threshold: 0.15 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  };
+
+  // ================================================
+  // 4. BARRE DE PROGRESSION DÉFILEMENT
+  // ================================================
+  const ProgressBar = {
+    init() {
+      this.bar = Utils.$('#scroll-progress');
+      if (!this.bar) return;
+
+      const update = Utils.throttle(() => {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const pct = scrollHeight - clientHeight > 0
+          ? (scrollTop / (scrollHeight - clientHeight)) * 100
+          : 0;
+        this.bar.style.width = `${pct.toFixed(1)}%`;
+      }, 30);
+
+      window.addEventListener('scroll', update, { passive: true });
+    }
+  };
+
+  // ================================================
+  // 5. THÈME SOMBRE / CLAIR
+  // ================================================
+  const Theme = {
+    STORAGE_KEY: 'mk-portfolio-theme',
+
+    init() {
+      this.btn = Utils.$('#theme-toggle');
+
+      /* Applique le thème sauvegardé OU la préférence système */
+      const saved  = localStorage.getItem(this.STORAGE_KEY);
+      const system = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const current = saved || system;
+
+      this._apply(current);
+
+      this.btn?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        this._apply(next);
+        localStorage.setItem(this.STORAGE_KEY, next);
+      });
+    },
+
+    _apply(theme) {
+      document.documentElement.dataset.theme = theme;
+      const icon = this.btn?.querySelector('i');
+      if (!icon) return;
+
+      if (theme === 'light') {
+        icon.className = 'fa-solid fa-moon';
+        this.btn?.setAttribute('aria-label', 'Passer en mode sombre');
+        this.btn?.setAttribute('title', 'Mode sombre');
       } else {
-        // Fallback: mark first nav link if IntersectionObserver not supported
-        const first = navLinks[0];
-        if (first) first.setAttribute('aria-current', 'page');
+        icon.className = 'fa-solid fa-sun';
+        this.btn?.setAttribute('aria-label', 'Passer en mode clair');
+        this.btn?.setAttribute('title', 'Mode clair');
       }
     }
   };
 
-  // ===== TYPEWRITER =====
+  // ================================================
+  // 6. TYPEWRITER
+  // ================================================
   class Typewriter {
-    constructor(element, options = {}) {
-      this.element = element;
-      this.texts = options.texts || CONFIG.typewriter.texts;
-      this.typeSpeed = options.typeSpeed || CONFIG.typewriter.typeSpeed;
-      this.deleteSpeed = options.deleteSpeed || CONFIG.typewriter.deleteSpeed;
-      this.pauseTime = options.pauseTime || CONFIG.typewriter.pauseTime;
-      this.startDelay = options.startDelay || CONFIG.typewriter.startDelay;
-      
-      this.textIndex = 0;
-      this.charIndex = 0;
-      this.isDeleting = false;
+    constructor(el, opts = {}) {
+      this.el          = el;
+      this.texts       = opts.texts       || CONFIG.typewriter.texts;
+      this.typeSpeed   = opts.typeSpeed   || CONFIG.typewriter.typeSpeed;
+      this.deleteSpeed = opts.deleteSpeed || CONFIG.typewriter.deleteSpeed;
+      this.pauseTime   = opts.pauseTime   || CONFIG.typewriter.pauseTime;
+      this.startDelay  = opts.startDelay  || CONFIG.typewriter.startDelay;
+      this.idx         = 0;
+      this.charIdx     = 0;
+      this.deleting    = false;
 
-      if (this.element && !Utils.prefersReducedMotion()) {
-        setTimeout(() => this.type(), this.startDelay);
-      } else if (this.element) {
-        this.element.textContent = this.texts[0];
+      if (!this.el) return;
+
+      if (Utils.prefersReducedMotion()) {
+        /* Affiche statiquement le premier texte */
+        this.el.textContent = this.texts[0] || '';
+        return;
       }
+      setTimeout(() => this._tick(), this.startDelay);
     }
 
-    type() {
-      if (!this.element) return;
+    _tick() {
+      if (!this.el) return;
+      const current = this.texts[this.idx] || '';
 
-      const currentText = this.texts[this.textIndex] || '';
+      if (this.deleting) {
+        this.charIdx = Math.max(0, this.charIdx - 1);
+        this.el.textContent = current.slice(0, this.charIdx);
 
-      if (this.isDeleting) {
-        this.charIndex = Math.max(0, this.charIndex - 1);
-        this.element.textContent = currentText.substring(0, this.charIndex);
-
-        if (this.charIndex === 0) {
-          this.isDeleting = false;
-          this.textIndex = (this.textIndex + 1) % this.texts.length;
-          setTimeout(() => this.type(), 500);
+        if (this.charIdx === 0) {
+          this.deleting = false;
+          this.idx = (this.idx + 1) % this.texts.length;
+          setTimeout(() => this._tick(), 450);
         } else {
-          setTimeout(() => this.type(), this.deleteSpeed);
+          setTimeout(() => this._tick(), this.deleteSpeed);
         }
       } else {
-        this.charIndex = Math.min(currentText.length, this.charIndex + 1);
-        this.element.textContent = currentText.substring(0, this.charIndex);
+        this.charIdx = Math.min(current.length, this.charIdx + 1);
+        this.el.textContent = current.slice(0, this.charIdx);
 
-        if (this.charIndex === currentText.length) {
-          this.isDeleting = true;
-          setTimeout(() => this.type(), this.pauseTime);
+        if (this.charIdx === current.length) {
+          this.deleting = true;
+          setTimeout(() => this._tick(), this.pauseTime);
         } else {
-          setTimeout(() => this.type(), this.typeSpeed);
+          setTimeout(() => this._tick(), this.typeSpeed);
         }
       }
     }
   }
 
-  // ===== ANIMATIONS =====
+  // ================================================
+  // 7. ANIMATIONS D'INTERSECTION
+  // ================================================
   const Anim = {
     init() {
-      this.setupSkills();
-      this.setupFadeIns();
+      this._animateSkills();
+      this._animateFadeIns();
     },
 
-    setupSkills() {
+    _animateSkills() {
       const bars = Utils.$$('.skill-progress');
       if (!bars.length) return;
-      if (typeof IntersectionObserver !== 'undefined') {
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const progress = entry.target.getAttribute('data-progress') || '0';
-                entry.target.style.setProperty('--progress', `${progress}%`);
-                entry.target.classList.add('animated');
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: CONFIG.animation.skillThreshold, rootMargin: '0px 0px -50px 0px' }
-        );
 
-        bars.forEach(bar => observer.observe(bar));
-      } else {
-        // Fallback: immediately apply progress
-        bars.forEach(bar => {
-          const progress = bar.getAttribute('data-progress') || '0';
-          bar.style.setProperty('--progress', `${progress}%`);
-          bar.classList.add('animated');
-        });
+      const apply = (bar) => {
+        const v = bar.getAttribute('data-progress') || '0';
+        bar.style.setProperty('--progress', `${v}%`);
+        bar.classList.add('animated');
+
+        /* Affiche le pourcentage dans l'élément .skill-percent si présent */
+        const pct = bar.closest('.skill-item')?.querySelector('.skill-percent');
+        if (pct) pct.textContent = `${v}%`;
+      };
+
+      if (typeof IntersectionObserver === 'undefined') {
+        bars.forEach(apply); return;
       }
+
+      const obs = new IntersectionObserver(
+        (entries, o) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            apply(entry.target);
+            o.unobserve(entry.target);
+          });
+        },
+        { threshold: CONFIG.animation.skillThreshold, rootMargin: '0px 0px -40px 0px' }
+      );
+      bars.forEach(b => obs.observe(b));
     },
 
-    setupFadeIns() {
-      const elements = Utils.$$('.section, .competence-category, .timeline-card');
-      if (!elements.length) return;
+    _animateFadeIns() {
+      const els = Utils.$$('.section, .competence-category, .timeline-card, .formation-card, .project-card');
+      if (!els.length) return;
 
-      if (typeof IntersectionObserver !== 'undefined') {
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-visible');
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: CONFIG.animation.sectionThreshold, rootMargin: '0px 0px -50px 0px' }
-        );
-
-        elements.forEach(el => {
-          el.classList.add('fade-in');
-          observer.observe(el);
-        });
-      } else {
-        elements.forEach(el => el.classList.add('fade-in-visible'));
+      if (typeof IntersectionObserver === 'undefined') {
+        els.forEach(el => el.classList.add('fade-in-visible')); return;
       }
 
-      Utils.$$('.timeline-card').forEach((card, i) => {
-        card.style.animationDelay = `${i * 0.15}s`;
+      const obs = new IntersectionObserver(
+        (entries, o) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('fade-in-visible');
+            o.unobserve(entry.target);
+          });
+        },
+        { threshold: CONFIG.animation.sectionThreshold, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      els.forEach((el, i) => {
+        el.classList.add('fade-in');
+        /* Délai en cascade pour les cards */
+        if (el.matches('.project-card, .timeline-card, .formation-card, .competence-category')) {
+          el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+        }
+        obs.observe(el);
       });
     }
   };
 
-  // ===== ACCORDION =====
+  // ================================================
+  // 8. FILTRE PROJETS
+  // ================================================
+  const Filter = {
+    init() {
+      this.btns  = Utils.$$('.filter-btn');
+      this.cards = Utils.$$('.project-card');
+      if (!this.btns.length || !this.cards.length) return;
+
+      this.btns.forEach(btn => {
+        btn.addEventListener('click', () => this._apply(btn));
+      });
+    },
+
+    _apply(activeBtn) {
+      /* Met à jour les boutons */
+      this.btns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      activeBtn.classList.add('active');
+      activeBtn.setAttribute('aria-pressed', 'true');
+
+      const filter = activeBtn.dataset.filter || 'all';
+
+      /* Affiche / masque les cartes */
+      this.cards.forEach(card => {
+        const cats = (card.dataset.category || '').split(' ');
+        const show = filter === 'all' || cats.includes(filter);
+
+        if (show) {
+          card.removeAttribute('hidden');
+          card.classList.remove('hidden');
+        } else {
+          card.setAttribute('hidden', '');
+          card.classList.add('hidden');
+        }
+      });
+    }
+  };
+
+  // ================================================
+  // 9. ACCORDÉON
+  // ================================================
   const Accordion = {
     init() {
       const toggles = Utils.$$('.accordion-toggle');
       if (!toggles.length) return;
 
       toggles.forEach(toggle => {
-        const controlsId = toggle.getAttribute('aria-controls');
-        const panel = controlsId ? Utils.$(`#${controlsId}`) : toggle.nextElementSibling;
+        const id    = toggle.getAttribute('aria-controls');
+        const panel = id ? Utils.$(`#${id}`) : toggle.nextElementSibling;
         if (!panel) return;
 
-        const close = () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          panel.hidden = true;
-        };
-
-        const open = () => {
-          toggle.setAttribute('aria-expanded', 'true');
-          panel.hidden = false;
-        };
+        const close = () => { toggle.setAttribute('aria-expanded', 'false'); panel.hidden = true; };
+        const open  = () => { toggle.setAttribute('aria-expanded', 'true');  panel.hidden = false; };
 
         toggle.addEventListener('click', () => {
-          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
 
-          // Fermer les autres accordions si plusieurs sont présents
-          Utils.$$('.accordion-toggle[aria-expanded="true"]').forEach(other => {
-            if (other !== toggle) {
-              const otherId = other.getAttribute('aria-controls');
-              const otherPanel = otherId ? Utils.$(`#${otherId}`) : other.nextElementSibling;
-              if (otherPanel) {
-                other.setAttribute('aria-expanded', 'false');
-                otherPanel.hidden = true;
+          /* Fermer les autres panneaux du même accordéon parent */
+          const parent = toggle.closest('.accordion-group');
+          if (parent) {
+            parent.querySelectorAll('.accordion-toggle[aria-expanded="true"]').forEach(other => {
+              if (other !== toggle) {
+                const otherId    = other.getAttribute('aria-controls');
+                const otherPanel = otherId ? Utils.$(`#${otherId}`) : other.nextElementSibling;
+                if (otherPanel) {
+                  other.setAttribute('aria-expanded', 'false');
+                  otherPanel.hidden = true;
+                }
               }
-            }
-          });
+            });
+          }
 
-          isExpanded ? close() : open();
+          expanded ? close() : open();
         });
 
+        /* Accessibilité clavier */
         toggle.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggle.click();
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
         });
       });
     }
   };
 
-  // ===== FORM =====
+  // ================================================
+  // 10. FORMULAIRE DE CONTACT
+  // ================================================
   const Form = {
     init() {
       this.form = Utils.$('#contact-form') || document.forms['submit-to-google-sheet'];
-      this.msg = Utils.$('#msg');
-
+      this.msg  = Utils.$('#msg');
       if (!this.form) return;
 
-      this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+      this.form.addEventListener('submit', (e) => this._handleSubmit(e));
     },
 
-    async handleSubmit(e) {
+    async _handleSubmit(e) {
       e.preventDefault();
 
-      const submitBtn = this.form.querySelector('.btn-submit');
-      const btnText = submitBtn?.querySelector('.btn-text');
-      const originalText = btnText?.textContent || 'Envoyer le message';
+      /* Validation HTML5 native */
+      if (!this.form.checkValidity()) {
+        this.form.reportValidity();
+        return;
+      }
 
-      if (btnText) btnText.textContent = 'Envoi...';
-      if (submitBtn) submitBtn.disabled = true;
+      const btn      = this.form.querySelector('.btn-submit');
+      const btnText  = btn?.querySelector('.btn-text');
+      const origText = btnText?.textContent || 'Envoyer';
+
+      if (btnText)  btnText.textContent = 'Envoi en cours…';
+      if (btn)      btn.disabled = true;
 
       try {
         await fetch(CONFIG.form.scriptURL, {
           method: 'POST',
-          body: new FormData(this.form)
+          body:   new FormData(this.form)
         });
-
-        this.showMessage('Message envoyé avec succès !', 'success');
+        this._showMsg('✅ Message envoyé avec succès !', 'success');
         this.form.reset();
-      } catch (error) {
-        this.showMessage("Erreur lors de l'envoi du message.", 'error');
-        console.error('Erreur:', error);
+      } catch {
+        this._showMsg('❌ Erreur lors de l\'envoi. Réessayez.', 'error');
       } finally {
-        if (this.msg) {
-          setTimeout(() => {
-            this.msg.textContent = '';
-            this.msg.classList.remove('fade-message');
-          }, 4000);
-        }
-
-        if (btnText) btnText.textContent = originalText;
-        if (submitBtn) submitBtn.disabled = false;
+        if (btnText)  btnText.textContent = origText;
+        if (btn)      btn.disabled = false;
+        setTimeout(() => {
+          if (this.msg) { this.msg.textContent = ''; this.msg.className = ''; }
+        }, 5000);
       }
     },
 
-    showMessage(text, type) {
+    _showMsg(text, type) {
       if (!this.msg) return;
       this.msg.textContent = text;
-      this.msg.className = `fade-message ${type}`;
+      this.msg.className   = type;
     }
   };
 
-  // ===== INIT =====
+  // ================================================
+  // 11. INITIALISATION
+  // ================================================
   const App = {
     init() {
       Nav.init();
+      ProgressBar.init();
+      Theme.init();
 
+      /* Typewriter */
       const typedEl = Utils.$('#typed-text');
       if (typedEl) {
-        const dataTexts = typedEl.getAttribute('data-typed-texts');
-        const options = {};
-        if (dataTexts) {
-          options.texts = dataTexts
-            .split('|')
-            .map(text => text.trim())
-            .filter(Boolean);
+        const raw  = typedEl.getAttribute('data-typed-texts');
+        const opts = {};
+        if (raw) {
+          opts.texts = raw.split('|').map(t => t.trim()).filter(Boolean);
         }
-        new Typewriter(typedEl, options);
+        new Typewriter(typedEl, opts);
       }
 
       Anim.init();
+      Filter.init();
       Accordion.init();
       Form.init();
 
-      console.log('✅ Portfolio initialisé');
+      /* Année automatique dans le footer */
+      const yearEl = Utils.$('#footer-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      console.log('✅ Portfolio MK initialisé avec succès');
     }
   };
 
+  /* Lancement après chargement du DOM */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => App.init());
   } else {
