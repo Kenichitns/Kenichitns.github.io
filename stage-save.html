@@ -1,60 +1,58 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Stage – Save | Mohamed Kharraz</title>
   <meta name="description" content="Détails du stage chez Save : réparation et gestion des appareils, support, Windows & Linux.">
-  <meta name="theme-color" content="#b20a2c">
+  <meta name="theme-color" content="#c0122e">
 
-  <!-- Preconnect / Prefetch -->
-  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-
-  <!-- Styles optimisés -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
   <link rel="preload" href="css/Style.css" as="style">
   <link rel="stylesheet" href="css/Style.css">
-
-  <!-- Preload JS optimisé -->
-  <link rel="preload" href="js/script.js" as="script">
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/c7e63e3440.js" crossorigin="anonymous" async defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <header id="header" class="header-secondary" role="banner">
-    <nav class="navbar container" aria-label="Navigation principale">
-      <a href="index.html" class="logo" aria-label="Retour à l'accueil">
-      </a>
-
-      <button 
-        id="nav-toggle" 
-        class="nav-toggle nav-toggle--menu" 
-        type="button"
-        aria-label="Ouvrir le menu de navigation" 
-        aria-controls="nav-links" 
-        aria-expanded="false"
-        aria-pressed="false"
-      >
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="sr-only">Menu</span>
-      </button>
-
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html#about" class="nav-link">À propos</a></li>
-        <li><a href="index.html#competences" class="nav-link">Compétences</a></li>
-        <li><a href="index.html#projets" class="nav-link">Expériences</a></li>
-        <li><a href="index.html#parcours" class="nav-link">Formation</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        <li><a href="Veille-IA-Jeux-Video.html" class="nav-link">Veille</a></li>
-        <li><a href="CV V2.pdf" download class="btn-nav">CV</a></li>
-      </ul>
+    <nav class="navbar" aria-label="Navigation principale">
+      <div class="navbar-container container">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+          <div class="logo-wrapper">
+            <div class="logo-icon" aria-hidden="true"><span class="logo-symbol">&lt;/&gt;</span></div>
+            <span class="logo-text">
+              <span class="logo-initials">MK</span>
+              <span class="logo-name">PORTFOLIO</span>
+            </span>
+          </div>
+        </a>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button id="theme-toggle" aria-label="Basculer le thème" title="Mode clair">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <button id="nav-toggle" class="nav-toggle nav-toggle--menu" type="button"
+            aria-label="Ouvrir le menu de navigation" aria-controls="nav-links" aria-expanded="false">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+        </div>
+        <ul class="nav-links" id="nav-links" role="list">
+          <li><a href="index.html#about"       class="nav-link">À propos</a></li>
+          <li><a href="index.html#competences" class="nav-link">Compétences</a></li>
+          <li><a href="index.html#projets"     class="nav-link">Expériences</a></li>
+          <li><a href="index.html#parcours"    class="nav-link">Formation</a></li>
+          <li><a href="index.html#contact"     class="nav-link">Contact</a></li>
+          <li><a href="Veille-IA-Jeux-Video.html" class="nav-link">Veille</a></li>
+          <li><a href="CV V2.pdf" download class="btn-nav">CV <i class="fa-solid fa-download" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="page-title-wrapper container">
@@ -81,6 +79,12 @@
           </div>
 
           <div class="about-text">
+
+            <div class="stage-meta">
+              <span class="year-badge"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Avril – Mai 2022</span>
+              <span class="status-badge status-completed">Stage terminé</span>
+            </div>
+
             <h3>Entreprise</h3>
             <p>
               Durant ce stage chez <strong>Save</strong>, j'ai participé à la réparation, la remise en service et la 
@@ -103,13 +107,18 @@
               <li>Support</li>
             </ul>
 
-            <p class="education-description">
-              Ce stage m'a permis d'améliorer ma rigueur dans les procédures de diagnostic, 
-              ma communication avec les utilisateurs, et ma capacité à documenter les interventions.
-            </p>
+            <div class="education-description" style="margin-top:18px">
+              <p>
+                Ce stage m'a permis d'améliorer ma rigueur dans les procédures de diagnostic,
+                ma communication avec les utilisateurs, et ma capacité à documenter les interventions.
+              </p>
+            </div>
 
-            <div style="margin-top:20px">
-              <a href="index.html#projets" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Retour aux expériences</a>
+            <div style="margin-top:24px">
+              <a href="index.html#projets" class="btn-secondary">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                <span>Retour aux expériences</span>
+              </a>
             </div>
           </div>
         </div>
@@ -120,17 +129,14 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; <time>2026</time> Mohamed Kharraz – Portfolio BTS SIO</p>
-        <p class="footer-subtitle">Conçu et développé par le sang et la sueur</p>
+        <p>&copy; <time id="footer-year">2026</time> Mohamed Kharraz – Portfolio BTS SIO</p>
+        <p class="footer-subtitle">Conçu et développé avec passion 🔴</p>
       </div>
-      <button id="scroll-top" aria-label="Retour en haut">
-        <i class="fa-solid fa-arrow-up"></i>
-      </button>
     </div>
+    <button id="scroll-top" aria-label="Retour en haut de la page">
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
   </footer>
-
-  <script src="js/script.js" defer></script>
 
 </body>
 </html>
-
