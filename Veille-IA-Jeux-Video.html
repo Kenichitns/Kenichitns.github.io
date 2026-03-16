@@ -138,8 +138,8 @@
       <a href="#demarche"><i class="fa-solid fa-compass"></i> Démarche</a>
       <a href="#introduction"><i class="fa-solid fa-chart-bar"></i> Chiffres clés</a>
       <a href="#timeline"><i class="fa-solid fa-timeline"></i> Timeline</a>
-      <a href="#moteurs"><i class="fa-solid fa-gears"></i> Moteurs</a>
-      <a href="#pnj"><i class="fa-solid fa-robot"></i> PNJ</a>
+      <a href="#joueurs"><i class="fa-solid fa-gamepad"></i> Côté Joueurs</a>
+      <a href="#dev"><i class="fa-solid fa-code"></i> Côté Dev</a>
       <a href="#ethique"><i class="fa-solid fa-scale-balanced"></i> Éthique</a>
       <a href="#environnement"><i class="fa-solid fa-leaf"></i> Environnement</a>
       <a href="#jury"><i class="fa-solid fa-circle-question"></i> Q&A Jury</a>
@@ -263,8 +263,8 @@
         <nav class="veille-nav" aria-label="Sections de la veille">
           <a href="#demarche"><i class="fa-solid fa-compass"></i> Démarche</a>
           <a href="#timeline"><i class="fa-solid fa-timeline"></i> Timeline</a>
-          <a href="#moteurs"><i class="fa-solid fa-gears"></i> Moteurs</a>
-          <a href="#pnj"><i class="fa-solid fa-robot"></i> PNJ</a>
+          <a href="#joueurs"><i class="fa-solid fa-gamepad"></i> Côté Joueurs</a>
+          <a href="#dev"><i class="fa-solid fa-code"></i> Côté Dev</a>
           <a href="#ethique"><i class="fa-solid fa-scale-balanced"></i> Éthique</a>
           <a href="#environnement"><i class="fa-solid fa-leaf"></i> Environnement</a>
           <a href="#tendances"><i class="fa-solid fa-chart-line"></i> Tendances</a>
@@ -370,64 +370,131 @@
       </div>
     </section>
 
-    <!-- MOTEURS -->
-    <section id="moteurs" class="section" aria-labelledby="moteurs-title">
+    <!-- CÔTÉ JOUEURS -->
+    <section id="joueurs" class="section" aria-labelledby="joueurs-title">
       <div class="container">
         <div class="section-header">
-          <h2 id="moteurs-title" class="section-title">Moteurs de Jeu &amp; Création IA</h2>
+          <h2 id="joueurs-title" class="section-title">
+            <i class="fa-solid fa-gamepad" style="color:var(--primary);margin-right:10px" aria-hidden="true"></i>
+            Côté Joueurs
+          </h2>
           <div class="title-underline"></div>
-          <p class="section-subtitle">L'IA au cœur de l'architecture — plus un simple plug-in</p>
+          <p class="section-subtitle">Ce que l'IA change concrètement pour l'expérience de jeu</p>
         </div>
-        <div class="data-table-wrapper">
-          <table class="data-table" aria-label="Outils IA GDC 2026">
-            <thead><tr><th>Outil</th><th>Développeur</th><th>Fonctionnalité clé</th><th>Impact</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Aura</strong></td><td>Ramen VR (Unreal)</td><td>Agents C++ & Blueprints contextuels</td><td style="color:var(--primary);font-weight:600">Production ×2 plus rapide</td></tr>
-              <tr><td><strong>Unity Sentis</strong></td><td>Unity Software</td><td>Inférence IA on-device (CPU/GPU)</td><td>Zéro coût cloud</td></tr>
-              <tr><td><strong>VISVISE</strong></td><td>Tencent Games</td><td>Auto-rigging, auto-skinning 3D</td><td>Libère les artistes</td></tr>
-              <tr><td><strong>Unity Muse</strong></td><td>Unity Software</td><td>Génération de textures/sprites par prompt</td><td>Itération rapide</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="alert-box">
-          <i class="fa-solid fa-flask" aria-hidden="true"></i>
-          <p><strong>Étude de cas — Sinn Studio & Aura :</strong> le jeu <em>Zombonks</em> a été expédié en 5 mois. Le pipeline d'assets est passé de <strong>2-3 jours à 4-5 heures par niveau</strong>.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- PNJ -->
-    <section id="pnj" class="section section-alt" aria-labelledby="pnj-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="pnj-title" class="section-title">PNJ &amp; Gameplay Génératif</h2>
-          <div class="title-underline"></div>
-          <p class="section-subtitle">La mémoire : nouveau moteur d'adhérence en 2026</p>
-        </div>
         <div class="cas-grid">
           <div class="cas-card">
             <div class="cas-header">
               <div class="cas-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
-              <div><div class="cas-title">Asterion — Le Boss qui Apprend</div><div class="cas-meta">MIR5 · Wemade Next × NVIDIA ACE</div></div>
+              <div><div class="cas-title">Asterion — Le Boss qui Apprend</div><div class="cas-meta">MIR5 · NVIDIA ACE · 2026</div></div>
             </div>
-            <p>Premier boss de MMORPG analysant les comportements en temps réel. Il enregistre les batailles, identifie les tactiques répétitives et développe des contre-stratégies adaptées.</p>
+            <p>Premier boss de MMORPG analysant les comportements en temps réel. Il mémorise les batailles passées, identifie les tactiques répétitives et développe des contre-stratégies adaptées à chaque groupe.</p>
             <ul class="card-tags"><li>SLM temps réel</li><li>NVIDIA ACE</li><li>Adaptatif</li></ul>
           </div>
+
           <div class="cas-card">
             <div class="cas-header">
               <div class="cas-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
               <div><div class="cas-title">Dead Meat — Interrogatoire Libre</div><div class="cas-meta">Meaning Machine · Authored AI</div></div>
             </div>
-            <p>Le joueur interroge des suspects avec ses propres mots (clavier ou voix). Le système <em>Authored AI</em> maintient le contrôle créatif tout en laissant émerger des interactions inédites.</p>
+            <p>Le joueur interroge des suspects avec ses propres mots, au clavier ou à la voix. Le système <em>Authored AI</em> garde le contrôle créatif tout en laissant émerger des interactions totalement inédites.</p>
             <ul class="card-tags"><li>Authored AI</li><li>Voice Input</li><li>Dialogue génératif</li></ul>
           </div>
+
           <div class="cas-card">
             <div class="cas-header">
               <div class="cas-icon"><i class="fa-solid fa-crosshairs"></i></div>
               <div><div class="cas-title">PUBG — Coéquipiers à Mémoire Longue</div><div class="cas-meta">Krafton × NVIDIA ACE · 2026</div></div>
             </div>
-            <p>Des coéquipiers IA qui mémorisent votre style de jeu, adaptent leurs suggestions tactiques à votre profil et apprennent vos préférences au fil des parties.</p>
-            <ul class="card-tags"><li>NVIDIA ACE</li><li>Mémoire persistante</li><li>Battle Royale</li></ul>
+            <p>Des coéquipiers IA qui mémorisent votre style de jeu session après session, adaptent leurs suggestions tactiques à votre profil et apprennent vos préférences au fil du temps.</p>
+            <ul class="card-tags"><li>Mémoire persistante</li><li>NVIDIA ACE</li><li>Battle Royale</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-gem"></i></div>
+              <div><div class="cas-title">DLSS 4.5 — Rendu Nouvelle Génération</div><div class="cas-meta">NVIDIA · CES 2026</div></div>
+            </div>
+            <p>Génération dynamique de 5 trames supplémentaires par trame rendue (6X Multi Frame Gen). Résultat : <strong>240+ FPS en 4K</strong> avec path tracing intégral, sans sacrifier la qualité visuelle.</p>
+            <ul class="card-tags"><li>240+ FPS en 4K</li><li>Path Tracing</li><li>G-SYNC Pulsar</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-universal-access"></i></div>
+              <div><div class="cas-title">Accessibilité — Xbox & IA</div><div class="cas-meta">Microsoft · Xbox Accessibility</div></div>
+            </div>
+            <p>L'IA sous-titre automatiquement les dialogues, adapte la difficulté en temps réel et génère des descriptions audio des scènes pour les joueurs malvoyants. Le jeu s'ouvre à tous les profils.</p>
+            <ul class="card-tags"><li>Sous-titrage IA</li><li>Difficulté adaptive</li><li>Audio descriptions</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div><div class="cas-title">Anti-triche Comportemental</div><div class="cas-meta">Valorant · Vanguard · Riot Games</div></div>
+            </div>
+            <p>Vanguard analyse les patterns de jeu en temps réel pour détecter les comportements suspects, sans se limiter à la signature de code. Une expérience plus équitable pour tous les joueurs.</p>
+            <ul class="card-tags"><li>Comportement</li><li>Temps réel</li><li>Fair play</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÔTÉ DÉVELOPPEURS -->
+    <section id="dev" class="section section-alt" aria-labelledby="dev-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="dev-title" class="section-title">
+            <i class="fa-solid fa-code" style="color:var(--primary);margin-right:10px" aria-hidden="true"></i>
+            Côté Développeurs
+          </h2>
+          <div class="title-underline"></div>
+          <p class="section-subtitle">Ce que l'IA change concrètement dans le pipeline de développement</p>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="data-table" aria-label="Outils IA pour les développeurs GDC 2026">
+            <thead><tr><th>Outil</th><th>Éditeur</th><th>Ce que ça fait</th><th>Impact concret</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Aura</strong></td><td>Ramen VR (Unreal)</td><td>Agent IA : gère éclairage, post-traitement, scripts C++ & Blueprints</td><td style="color:var(--primary);font-weight:600">2-3 jours → 4-5h par niveau</td></tr>
+              <tr><td><strong>Unity Sentis</strong></td><td>Unity Software</td><td>Exécute des modèles IA directement sur le CPU/GPU du joueur</td><td>Zéro coût serveur cloud</td></tr>
+              <tr><td><strong>VISVISE</strong></td><td>Tencent Games</td><td>Auto-rigging et auto-skinning de personnages 3D</td><td>Libère les artistes</td></tr>
+              <tr><td><strong>Unity Muse</strong></td><td>Unity Software</td><td>Génération de textures, sprites et animations par prompt texte</td><td>Prototypage ×3 plus rapide</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-box">
+          <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          <p><strong>Étude de cas — Sinn Studio & Aura :</strong> le jeu <em>Zombonks</em> expédié en seulement <strong>5 mois</strong> grâce à l'agent Aura sur Unreal Engine. Le pipeline d'assets est passé de <strong>2-3 jours à 4-5 heures par niveau</strong>.</p>
+        </div>
+
+        <div class="cas-grid" style="margin-top:32px">
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-code-branch"></i></div>
+              <div><div class="cas-title">Intelligence de dépôt</div><div class="cas-meta">Paradigme 2026 · Repository Intelligence</div></div>
+            </div>
+            <p>Contrairement aux suggestions de lignes de 2024, l'IA de 2026 comprend <strong>l'historique complet du projet</strong>, anticipe les erreurs architecturales et corrige automatiquement les bugs courants.</p>
+            <ul class="card-tags"><li>Contexte étendu</li><li>Auto-fix</li><li>Architecture-aware</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <div><div class="cas-title">Agents collaboratifs</div><div class="cas-meta">Paradigme post-chatbot · 2026</div></div>
+            </div>
+            <p>L'IA ne répond plus — elle <strong>agit</strong>. Les agents planifient des tâches, gèrent des fichiers et orchestrent des workflows entiers. Le développeur définit des objectifs, pas des instructions ligne à ligne.</p>
+            <ul class="card-tags"><li>Orchestration</li><li>Multi-agent</li><li>Context Engineering</li></ul>
+          </div>
+
+          <div class="cas-card">
+            <div class="cas-header">
+              <div class="cas-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div><div class="cas-title">Impact sur les emplois</div><div class="cas-meta">GDC 2026 · State of the Industry</div></div>
+            </div>
+            <p><strong>52%</strong> des devs estiment l'IA néfaste (vs 18% en 2024). <strong>28%</strong> ont été licenciés ces deux ans. Les postes juniors sont les plus menacés — mais 36% utilisent l'IA au quotidien malgré tout.</p>
+            <ul class="card-tags"><li>52% négatif</li><li>28% licenciés</li><li>Postes juniors</li></ul>
           </div>
         </div>
       </div>
